@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     permission = db.Column(db.Integer, default='1')
     schedule = db.relationship('Schedule', backref='User', lazy=True)
+    grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def get_reset_token(self, expires_sec=1800):
@@ -37,7 +38,10 @@ class User(db.Model, UserMixin):
 class Schedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    #insert variable that holds schedule here and __repr__ fnc
+    frees = db.Column(db.PickleType, nullable=False)
+    
+    def __repr__(self):
+        return f"{User.query.get(self.user_id)} has the following frees: {self.frees}"
 
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
