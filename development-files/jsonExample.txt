@@ -1,10 +1,7 @@
-/* The following JSON files are dummy data based on requests the iOS app might make to the server 
- * Everything is based around the user and course ids, so when you are returned an id
- * you can make a seperate search for information by id using the first two methods 
- */
+/* The following JSON files are dummy data based on requests the iOS app might make to the server */
 
 
-// Getting information on a user
+// Getting information on a user by id
 {
 	"id" : 1242141241,
 	"username" : "stevenyuser",
@@ -15,36 +12,48 @@
 	"date-joined" : "2021-10-07 22:14:23"
 }
 
-// Requesting information on a course
+// Requesting information on a course by id
 {
 	"id" : 1591085,
 	"name" : "Math 301",
 	"description" : "Early trancendentals and calculus"
 }
 
-// Using one persons tutor id to find all of their matched students
-// Returns array of other user_ids
-// You can then send requests for each user's information using these ids
+// Using one persons tutor id to find all of their matched students and returns the course
 {
-	"matches" : [4124144, 12412414, 14424345]
+	"matches" : [
+            {"id": 1241244, "username" : "example", "email" : "example@gmail.com", "course" : { "id": 12414, "name": "Math"}},
+            {"id": 4124145, "username" : "example2", "email" : "example2@gmail.com", "course" : { "id": 14124, "name": "English"}}
+    ]
 }
 
-// Could also do a backwards search to request matched tutors for a student, but would
-// need an extra parameter in the request
+// Using one persons tutee id to find all of their matched teachers and returns the course
 {
-	"matches" : [124124,7576577,90497047]
+	"matches" : [
+            {"id": 4124124, "username" : "example3", "email" : "example3@gmail.com", "course" : { "id": 12414, "name": "Math"}},
+            {"id": 4465399, "username" : "example4", "email" : "example4@gmail.com", "course" : { "id": 14124, "name": "English"}}
+    ]
 }
 
 // Get courses a user teaches 
 // Use the returned course ids to make another request for information on the course
 {
-    "matches" : [12414,66456654,90645906]
+    "matches" : [
+        {
+            {"id" : 14124124, "name" : "Math"}
+            {"id" : 24919409, "name" : "English"}
+        }
+    ]
 }
 
 // Get courses a user wants to learn
 {
-
-    "matches" : [895486946,65490690456]
+    "matches" : [
+        {
+            {"id" : 41920490, "name" : "CS"}
+            {"id" : 90940190, "name" : "Chem"}
+        }
+    ]
 }
 
 // Requesting a frees a user has by id
