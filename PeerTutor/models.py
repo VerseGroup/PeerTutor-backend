@@ -15,7 +15,6 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(10), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     permission = db.Column(db.Integer, default='1')
-    listings = db.relationship('Listing', backref='author', lazy=True)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def get_reset_token(self, expires_sec=1800):
@@ -33,3 +32,21 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', 'Permission:{self.permission}')"
+
+class Course(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=True, nullable=False)
+    description = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"Course('{self.title}', '{self.date_posted}')"
+
+#Multiple tutors/tutees teach/take many courses
+#In order to have a many-many relationship we need a seperate model-
+#that holds the connections
+
+class PeopleMatch(db.Model()):
+    pass
+
+class CourseToPeopleMatch(db.Model()):
+    pass
