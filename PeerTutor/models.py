@@ -42,11 +42,22 @@ class Course(db.Model):
         return f"Course('{self.title}', '{self.date_posted}')"
 
 #Multiple tutors/tutees teach/take many courses
-#In order to have a many-many relationship we need a seperate model-
-#that holds the connections
+#Need a many-many table to hold relationships
 
-class PeopleMatch(db.Model()):
-    pass
+peopleMatches = db.Table('peopleMatches',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('user2_id', db.Integer, db.ForeignKey('user2.id'))
+)
 
-class CourseToPeopleMatch(db.Model()):
-    pass
+courseToTeacher = db.Table('courseToTeacher',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id'))
+)
+
+courseToStudent = db.Table('courseToStudent',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id'))
+)
+
+
+
