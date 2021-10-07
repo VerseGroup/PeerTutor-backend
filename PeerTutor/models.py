@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(10), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     permission = db.Column(db.Integer, default='1')
+    schedule = db.relationship('Schedule', backref='User', lazy=True)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def get_reset_token(self, expires_sec=1800):
@@ -33,13 +34,18 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', 'Permission:{self.permission}')"
 
+class Schedule(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    #insert variable that holds schedule here and __repr__ fnc
+
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
-        return f"Course('{self.title}', '{self.date_posted}')"
+        return f"Course('{self.title}')"
 
 #Multiple tutors/tutees teach/take many courses
 #Need a many-many table to hold relationships
