@@ -1,0 +1,53 @@
+/* The following JSON files are dummy data based on requests the iOS app might make to the server 
+ * Everything is based around the user and course ids, so when you are returned an id
+ * you can make a seperate search for information by id using the first two methods 
+ */
+
+
+// Getting information on a user
+{
+	"id" : 1242141241,
+	"username" : "stevenyuser",
+	"email" : "example@gmail.com",
+	"phone" : 2547658765,
+	"permission" : 3,
+	"grade" : 11,
+	"date-joined" : "2021-10-07 22:14:23"
+}
+
+// Requesting information on a course
+{
+	"id" : 1591085,
+	"name" : "Math 301",
+	"description" : "Early trancendentals and calculus"
+}
+
+// Using one persons tutor id to find all of their matched students
+// Returns array of other user_ids
+// You can then send requests for each user's information using these ids
+{
+	"matches" : [4124144, 12412414, 14424345]
+}
+
+// Could also do a backwards search to request matched tutors for a student, but would
+// need an extra parameter in the request
+{
+	"matches" : [124124,7576577,90497047]
+}
+
+// Get courses a user teaches 
+// Use the returned course ids to make another request for information on the course
+{
+    "matches" : [12414,66456654,90645906]
+}
+
+// Get courses a user wants to learn
+{
+
+    "matches" : [895486946,65490690456]
+}
+
+// Requesting a frees a user has by id
+{
+	"frees" : ["d1p2","d2P3","d5P7","d7p7"]
+}

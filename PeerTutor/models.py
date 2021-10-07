@@ -55,8 +55,8 @@ class Course(db.Model):
 #Need a many-many table to hold relationships
 
 peopleMatches = db.Table('peopleMatches',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('user2_id', db.Integer, db.ForeignKey('user2.id'))
+    db.Column('tutor_id', db.Integer, db.ForeignKey('tutor.id')),
+    db.Column('tutee_id', db.Integer, db.ForeignKey('tutee.id'))
 )
 
 courseToTeacher = db.Table('courseToTeacher',
