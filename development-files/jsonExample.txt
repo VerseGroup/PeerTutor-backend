@@ -22,16 +22,16 @@
 // Using one persons tutor id to find all of their matched students and returns the course
 {
 	"matches" : [
-            {"id": 1241244, "username" : "example", "email" : "example@gmail.com", "course" : { "id": 12414, "name": "Math"}},
-            {"id": 4124145, "username" : "example2", "email" : "example2@gmail.com", "course" : { "id": 14124, "name": "English"}}
+        {"id": 1241244, "username" : "example", "email" : "example@gmail.com", "course" : { "id": 12414, "name": "Math"}},
+        {"id": 4124145, "username" : "example2", "email" : "example2@gmail.com", "course" : { "id": 14124, "name": "English"}}
     ]
 }
 
 // Using one persons tutee id to find all of their matched teachers and returns the course
 {
 	"matches" : [
-            {"id": 4124124, "username" : "example3", "email" : "example3@gmail.com", "course" : { "id": 12414, "name": "Math"}},
-            {"id": 4465399, "username" : "example4", "email" : "example4@gmail.com", "course" : { "id": 14124, "name": "English"}}
+        {"id": 4124124, "username" : "example3", "email" : "example3@gmail.com", "course" : { "id": 12414, "name": "Math"}},
+        {"id": 4465399, "username" : "example4", "email" : "example4@gmail.com", "course" : { "id": 14124, "name": "English"}}
     ]
 }
 
@@ -39,20 +39,16 @@
 // Use the returned course ids to make another request for information on the course
 {
     "matches" : [
-        {
-            {"id" : 14124124, "name" : "Math"}
-            {"id" : 24919409, "name" : "English"}
-        }
+        {"id" : 14124124, "name" : "Math"}
+        {"id" : 24919409, "name" : "English"}
     ]
 }
 
 // Get courses a user wants to learn
 {
     "matches" : [
-        {
-            {"id" : 41920490, "name" : "CS"}
-            {"id" : 90940190, "name" : "Chem"}
-        }
+        {"id" : 41920490, "name" : "CS"}
+        {"id" : 90940190, "name" : "Chem"}
     ]
 }
 
