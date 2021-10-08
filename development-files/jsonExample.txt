@@ -1,4 +1,5 @@
 /* The following JSON files are dummy data based on requests the iOS app might make to the server */
+/* in .txt format because they are examples */
 
 
 // Getting information on a user by id
