@@ -39,7 +39,7 @@
 // Use the returned course ids to make another request for information on the course
 {
     "matches" : [
-        {"id" : 14124124, "name" : "Math"}
+        {"id" : 14124124, "name" : "Math"},
         {"id" : 24919409, "name" : "English"}
     ]
 }
@@ -47,7 +47,7 @@
 // Get courses a user wants to learn
 {
     "matches" : [
-        {"id" : 41920490, "name" : "CS"}
+        {"id" : 41920490, "name" : "CS"},
         {"id" : 90940190, "name" : "Chem"}
     ]
 }
