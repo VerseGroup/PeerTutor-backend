@@ -16,7 +16,8 @@ class User(db.Model, UserMixin):
     permission = db.Column(db.Integer, default='1')
     grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    waiting_for = db.Column(db.String(60), default="")
+    waiting_for = db.Column(db.PickleType)
+    gradeLevels = db.Column(db.String(120), default="8,9,10,11,12")
 
     #Relationships
     schedule = db.relationship('Schedule', backref='User', lazy=True)
