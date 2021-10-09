@@ -13,7 +13,7 @@ class RegisterUser(Resource):
     parser.add_argument('grade', type=int, required=True, help='Need grade or convert grade to int')
     
     def get(self):
-        return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 404
+        return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 400
 
     def post(self):
         #parsing args

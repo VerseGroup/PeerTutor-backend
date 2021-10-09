@@ -1,0 +1,1 @@
+Potential Error Codes (beyond HTTP errors):
