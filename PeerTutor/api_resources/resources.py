@@ -41,6 +41,8 @@ class RegisterUser(Resource):
             }, 400
 
 #FINDING INFORMATION ON USER
+
+#MOVE BELOW TO a utils.py
 def abort_if_user_doesnt_exist(user_id):
     if User.query.get(user_id) is None:
         abort(404, message= f"User '{user_id}' doesn't exist")
@@ -49,12 +51,5 @@ class UserInfo(Resource):
     def get(self, user_id):
         abort_if_user_doesnt_exist(user_id)
         user = User.query.get(user_id)
-        return jsonify(
-            {
-                "phone" : user.phone, 
-                "email" : user.email, 
-                "grade" : user.grade,
-                "username" : user.username,
-                "permission" : user.permission
-            }
-        )
+        return user.toJSON()
+        
