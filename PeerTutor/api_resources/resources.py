@@ -1,11 +1,11 @@
 from PeerTutor import Resource, db, bcrypt
-from flask_restful import reqparse
+from flask_restful import reqparse, abort
 from PeerTutor.models import User
+from flask import jsonify
 
 parser = reqparse.RequestParser(bundle_errors=True)
 
 class RegisterUser(Resource):
-
     parser.add_argument('username', required=True, help='Need username')
     parser.add_argument('password', required=True, help='Need password')
     parser.add_argument('email', required=True, help='Need email')
@@ -39,4 +39,22 @@ class RegisterUser(Resource):
             return {
                 "message" : "error (user probably already exists)",
             }, 400
-        
+
+#FINDING INFORMATION ON USER
+def abort_if_user_doesnt_exist(user_id):
+    if User.query.get(user_id) is None:
+        abort(404, message= f"User '{user_id}' doesn't exist")
+  
+class UserInfo(Resource):
+    def get(self, user_id):
+        abort_if_user_doesnt_exist(user_id)
+        user = User.query.get(user_id)
+        return jsonify(
+            {
+                "phone" : user.phone, 
+                "email" : user.email, 
+                "grade" : user.grade,
+                "username" : user.username,
+                "permission" : user.permission
+            }
+        )

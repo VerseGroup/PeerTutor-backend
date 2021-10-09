@@ -24,3 +24,6 @@ app.register_blueprint(main)
 #Registering API (use 'curl url' to test)
 from PeerTutor.api_resources.resources import RegisterUser
 api.add_resource(RegisterUser, '/RegisterUser')
+
+from PeerTutor.api_resources.resources import UserInfo
+api.add_resource(UserInfo, '/UserInfo/<int:user_id>')
