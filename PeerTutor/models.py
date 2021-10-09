@@ -16,8 +16,8 @@ class User(db.Model, UserMixin):
     permission = db.Column(db.Integer, default='1')
     grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    waiting_for = db.Column(db.PickleType)
-    gradeLevels = db.Column(db.String(120), default="8,9,10,11,12")
+    waiting_for = db.Column(db.PickleType, nullable=True)
+    gradeLevels = db.Column(db.String(120), default="8,9,10,11,12") #8 means all middle school
 
     #Relationships
     schedule = db.relationship('Schedule', backref='User', lazy=True)
@@ -49,7 +49,7 @@ class User(db.Model, UserMixin):
         return User.query.get(user_id)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', 'Permission:{self.permission}')"
+        return f"User('{self.username}', '{self.email}', 'Permission:{self.permission}', id:{self.id})"
 
 class Schedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)

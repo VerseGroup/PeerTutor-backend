@@ -29,6 +29,7 @@ class RegisterUser(Resource):
 
         #registering user
         user = User(username=username, email=email, password=hashed_password, grade=grade)
+        print(user)
         db.session.add(user)
         try:  
             db.session.commit()

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} PeerTutor Admin Console {% endblock %}
+
+{% block content %}
+    <h1> Hello Admin </h1>
+    <h2> User Database: </h2>
+    <table class="admin-table">
+        <tr>
+            <th> Username </th>
+            <th> ID </th>
+            <th> Email </th>
+            <th> Permission </th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td> {{ user.username }} </td>
+                <td> {{ user.id }} </td>
+                <td> {{ user.email }} </td>
+                <td> {{ user.permission }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <small>
+        Note! This is a development page, and will be locked during release to non-registered admins.
+    </small>
+{% endblock %}

@@ -21,6 +21,9 @@ api = Api(app)
 from PeerTutor.main.routes import main
 app.register_blueprint(main)
 
+from PeerTutor.admin.routes import admin
+app.register_blueprint(admin)
+
 #Registering API (use 'curl url' to test)
 from PeerTutor.api_resources.resources import RegisterUser
 api.add_resource(RegisterUser, '/RegisterUser')

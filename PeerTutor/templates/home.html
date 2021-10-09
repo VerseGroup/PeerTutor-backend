@@ -3,11 +3,12 @@
 {% block title %} PeerTutor {% endblock %}
 
 {% block content %}
-<h1> Welcome to PeerTutor! </h1>
-<p> 
-    Currently in development stage. Check back later for an official release!
-</p>
-<p>
-    In order to use the API, use the 'curl' method in terminal
-</p>
+    <h1> Welcome to PeerTutor! </h1>
+    <p> 
+        Currently in development stage. Check back later for an official release!
+    </p>
+    <p>
+        In order to use the API, use the 'curl' method in terminal
+    </p>
+    <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Admin Page? </a>
 {% endblock %}
