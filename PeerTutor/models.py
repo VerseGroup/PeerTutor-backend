@@ -72,7 +72,8 @@ class Course(db.Model):
 peopleMatches = db.Table('peopleMatches',
     db.Column('tutor_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
     db.Column('tutee_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False)
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
+    db.Column('period', db.String, nullable=False)
 )
 
 requestedCourses = db.Table('requestedCourses',
