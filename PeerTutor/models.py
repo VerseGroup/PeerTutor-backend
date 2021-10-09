@@ -15,9 +15,11 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(10), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     permission = db.Column(db.Integer, default='1')
-    schedule = db.relationship('Schedule', backref='User', lazy=True)
     grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    #Relationships
+    schedule = db.relationship('Schedule', backref='User', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -55,18 +57,15 @@ class Course(db.Model):
 #Need a many-many table to hold relationships
 
 peopleMatches = db.Table('peopleMatches',
-    db.Column('tutor_id', db.Integer, db.ForeignKey('tutor.id')),
-    db.Column('tutee_id', db.Integer, db.ForeignKey('tutee.id'))
+    db.Column('tutor_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    db.Column('tutee_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False)
 )
 
-courseToTeacher = db.Table('courseToTeacher',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'))
-)
-
-courseToStudent = db.Table('courseToStudent',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'))
+requestedCourses = db.Table('requestedCourses',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
+    db.Column('teachOrLearn', db.Boolean, nullable=False)
 )
 
 

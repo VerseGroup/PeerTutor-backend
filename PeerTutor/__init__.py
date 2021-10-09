@@ -17,8 +17,7 @@ login_manager.login_message_category = '#' #add custom class
 mail = Mail(app)
 api = Api(app)
 
-#Register blueprints below in the following format: 
-
+#Registering blueprints
 from PeerTutor.main.routes import main
 app.register_blueprint(main)
 
