@@ -12,11 +12,11 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    phone = db.Column(db.String(10), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     permission = db.Column(db.Integer, default='1')
     grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    waiting_for = db.Column(db.String(60), default="")
 
     #Relationships
     schedule = db.relationship('Schedule', backref='User', lazy=True)
