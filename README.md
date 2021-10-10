@@ -11,7 +11,7 @@ ___
 
 ___
 
-## In order to run the website during development do the follow:
+## In order to run the server during development do the follow:
 ###### On MAC OS:
 1. Download the program files from github
 
