@@ -75,7 +75,7 @@ class Course(db.Model):
 class CourseRequest(db.Model):
     __tablename__ = 'courseRequest'
     id = db.Column(db.Integer, primary_key=True)
-    tutor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     course_id = db.Column(db.Integer, nullable=False)
     relationship = db.Column('relationship', db.Boolean, nullable=False)
 

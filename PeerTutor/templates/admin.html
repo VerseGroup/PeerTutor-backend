@@ -40,7 +40,26 @@
         {% endfor %}
     </table>
     <a class="development-link" href="{{ url_for('admin.addCourse')}}"> Add Course? </a>
+    
     <br>
+    
+    <h2> Request Database: </h2>
+    <table class="admin-table">
+        <tr>
+            <th> ID </th>
+            <th> Course ID </th>
+            <th> User ID </th>
+            <th> Relationship </th>
+        </tr>
+        {% for request in requests %}
+            <tr>
+                <td> {{ request.id }} </td>
+                <td> {{ request.user_id }} </td>
+                <td> {{ request.course_id }} </td>
+                <td> {{ request.relationship}} </td>
+            </tr>
+        {% endfor %}
+    </table>
     <small>
         Note! This is a development page, and will be locked during release to non-registered admins.
     </small>

@@ -78,7 +78,7 @@ class RequestCourse(Resource):
         user = User.query.get(user_id)
         course = Course.query.get(course_id)
 
-        request = CourseRequest(user=user, course=course, relationship=relationship)
+        request = CourseRequest(user=user, course_id=course.id, relationship=relationship)
         db.session.add(request)
         
         try:  
