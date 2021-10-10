@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} Add Course {% endblock %}
+
 {% block content %}
 <div>
     <form method="POST" action="">
@@ -40,4 +42,7 @@
         </div>
     </form>
 </div>
+<small>
+    <a class="development-link" href="{{ url_for('admin.adminPage') }} "> Return To Console? </a>
+</small>
 {% endblock content %}
