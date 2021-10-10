@@ -64,8 +64,29 @@
             </tr>
         {% endfor %}
     </table>
+    <h2 class="admin-table-title"> Match Database: </h2>
+    <table class="admin-table">
+        <tr>
+            <th> ID </th>
+            <th> Tutor ID </th>
+            <th> Student ID </th>
+            <th> Course ID </th>
+            <th> Period </th>
+        </tr>
+        {% for match in matches %}
+            <tr>
+                <td> {{ match.id }} </td>
+                <td> {{ match.tutor_id }} </td>
+                <td> {{ match.tutee_id }} </td>
+                <td> {{ match.course_id }} </td>
+                <td> {{ match.period }} </td>
+            </tr>
+        {% endfor %}
+    </table>
     <br> <br>
     <small style="color:red">
         Note! This is a development page, and will be locked during release to non-registered admins.
     </small>
+    <br> <br>
+    <a class="development-link" href="{{url_for('main.home')}}"> Return to home? </a>
 {% endblock %}
