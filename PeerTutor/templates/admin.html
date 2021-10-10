@@ -19,7 +19,7 @@
                 <td> {{ user.id }} </td>
                 <td> {{ user.email }} </td>
                 <td> {{ user.permission }} </td>
-                <td> {{ extract(user.waiting_for) }} </td>
+                <td> {{ CourseRequest.query.filter_by(user_id=user.id).all() }} </td>
             </tr>
         {% endfor %}
     </table>
@@ -40,9 +40,9 @@
         {% endfor %}
     </table>
     <a class="development-link" href="{{ url_for('admin.addCourse')}}"> Add Course? </a>
-    
+
     <br>
-    
+
     <h2> Request Database: </h2>
     <small>
         Relationship Parameter: Teach as true, Learn as false
