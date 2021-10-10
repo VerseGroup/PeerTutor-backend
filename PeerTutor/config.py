@@ -2,8 +2,9 @@ import os
 
 class Config:
     #Setting up app
-    SECRET_KEY = os.environ.get('SECRET_KEY') #Environment Variable
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI') #Environment Variable
+    SECRET_KEY = "temp_pass" #Environment Variable
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'PeerTutor.db')
     print(SQLALCHEMY_DATABASE_URI)
 
 
