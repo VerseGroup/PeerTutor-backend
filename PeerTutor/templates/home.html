@@ -10,5 +10,23 @@
     <p>
         In order to use the API, use the 'curl' method in terminal
     </p>
-    <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Admin Page? </a>
+    <p style="text-decoration:underline">
+        Here are currently allowed API Requests:
+    </p>
+    <p>
+        Look up a user @ /UserInfo/# 
+    </p>
+        Look up a course @ /CourseInfo/#
+    <p>
+        Register a user @ curl http://localhost:5000/RegisterUser -d "username=example2" 
+            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -X POST -v
+    </p>
+    <p>
+        Request a course for a user @ curl http://localhost:5000/RequestCourse -d "user_id=1" 
+            -d "course_id=2" -d "relationship=True" -X POST -v
+        where relationship True = teach and relationship False = learn
+        
+    </p>
+    <br> <br>
+    <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
 {% endblock %}
