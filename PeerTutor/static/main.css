@@ -15,6 +15,12 @@ tr:nth-child(even) {
 tr:hover {
     background-color: yellow;
 }
+.admin-table-title {
+    text-decoration: underline;
+    border-top: 1px solid darkgrey;
+    margin-top: 50px;
+    padding:10px;
+}
 
 /* Development Styles */
 .development-link {
