@@ -46,6 +46,10 @@ these variables will be required for full functionality.
 
 <br>
 
+Then hit 'ctrl+x', 'y', and then 'enter'. Type `clear` to clean the terminal. 
+
+<br>
+
 To launch the server run the following commands in terminal on seperate lines:
 
 <br>
@@ -73,6 +77,10 @@ python run.py
 <br>
 
 Navigate to http://localhost:5000 to view the website and for instructions on using the **API**
+
+<br>
+
+Stop running the server by hitting 'ctrl+c' and type `deactivate` in terminal to deactivate the virtual environment
 
 <br>
 
