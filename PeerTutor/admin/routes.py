@@ -13,7 +13,7 @@ def adminPage():
     users = User.query.order_by(User.date_joined.desc()).all()
     courses = Course.query.order_by(Course.id.desc()).all()
     requests = CourseRequest.query.order_by(CourseRequest.id.desc()).all()
-    return render_template('/admin.html', users=users, courses=courses, requests=requests, extract=extract)
+    return render_template('/admin.html', users=users, courses=courses, requests=requests, extract=extract, CourseRequest=CourseRequest)
 
 @admin.route('/admin/add', methods=['GET', 'POST'])
 def addCourse():

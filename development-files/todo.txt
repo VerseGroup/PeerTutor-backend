@@ -1,0 +1,11 @@
+TODO
+
+IN API
+1. add Course lookup
+2. find student's teachers and teacher's students by using id
+3. matches algorithim
+(SCHEDULE?? send frees but how? pdf? image anaylsis? api?)
+4. website to change password, same functions as app
+5. courses a user teaches vs wants to learn
+
+Deploy
