@@ -7,5 +7,6 @@ IN API
 (SCHEDULE?? send frees but how? pdf? image anaylsis? api?)
 4. website to change password, same functions as app
 5. courses a user teaches vs wants to learn
++ a lot more
 
 Deploy
