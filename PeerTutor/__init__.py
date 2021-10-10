@@ -30,3 +30,6 @@ api.add_resource(RegisterUser, '/RegisterUser')
 
 from PeerTutor.api_resources.resources import UserInfo
 api.add_resource(UserInfo, '/UserInfo/<int:user_id>')
+
+from PeerTutor.api_resources.resources import RequestCourse
+api.add_resource(RequestCourse, '/RequestCourse')

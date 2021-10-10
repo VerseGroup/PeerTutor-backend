@@ -1,3 +1,4 @@
+from sqlalchemy.orm import relationship
 from PeerTutor import db #,login_manager
 from datetime import datetime
 from flask_login import UserMixin
@@ -20,7 +21,9 @@ class User(db.Model, UserMixin):
     gradeLevels = db.Column(db.String(120), default="8,9,10,11,12") #8 means all middle school
 
     #Relationships
-    schedule = db.relationship('Schedule', backref='User', lazy=True)
+    schedule = db.relationship('Schedule', backref='user', lazy=True)
+    matches = db.relationship('Match', backref='user', lazy=True)
+    requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
     def toJSON(self):
         return jsonify(
@@ -28,7 +31,6 @@ class User(db.Model, UserMixin):
                 "id": self.id,
                 "username" : self.username,
                 "email": self.email,
-                "phone" : self.phone,
                 "grade" : self.grade,
                 "date-joined" : self.date_joined,
                 "permission" : self.permission
@@ -63,22 +65,20 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=False)
-
+    requests = db.relationship('CourseRequest', backref='course', lazy=True)
+    
     def __repr__(self):
         return f"Course('{self.title}')"
 
-#Multiple tutors/tutees teach/take many courses
-#Need a many-many table to hold relationships
+class CourseRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tutor_id = db.Column('tutor_id',db.Integer, db.ForeignKey('user.id'), nullable=False)
+    course_id = db.Column('course_id',db.Integer, db.ForeignKey('course.id'), nullable=False)
+    relationship = db.Column('relationship', db.Boolean, nullable=False)
 
-peopleMatches = db.Table('peopleMatches',
-    db.Column('tutor_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    db.Column('tutee_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
-    db.Column('period', db.String, nullable=False)
-)
-
-requestedCourses = db.Table('requestedCourses',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
-    db.Column('teachOrLearn', db.Boolean, nullable=False)
-)
+class Match(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tutor_id = db.Column('tutor_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    tutee_id = db.Column('tutee_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    course_id = db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
+    period = db.Column('period', db.String, nullable=False)
