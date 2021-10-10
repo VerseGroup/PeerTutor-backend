@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 from PeerTutor import db
 from PeerTutor.models import User, Course, CourseRequest
 from PeerTutor.admin.forms import AddCourseForm
-from PeerTutor.admin.utils import extract
+from PeerTutor.admin.utils import extract, get_user_requests
 
 admin = Blueprint('admin', __name__)
 
@@ -13,7 +13,8 @@ def adminPage():
     users = User.query.order_by(User.date_joined.desc()).all()
     courses = Course.query.order_by(Course.id.desc()).all()
     requests = CourseRequest.query.order_by(CourseRequest.id.desc()).all()
-    return render_template('/admin.html', users=users, courses=courses, requests=requests, extract=extract, CourseRequest=CourseRequest)
+    return render_template('/admin.html', users=users, courses=courses, 
+        get_user_requests=get_user_requests, requests=requests, extract=extract)
 
 @admin.route('/admin/add', methods=['GET', 'POST'])
 def addCourse():

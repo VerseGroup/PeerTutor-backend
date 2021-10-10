@@ -19,7 +19,7 @@
                 <td> {{ user.id }} </td>
                 <td> {{ user.email }} </td>
                 <td> {{ user.permission }} </td>
-                <td> {{ CourseRequest.query.filter_by(user_id=user.id).all() }} </td>
+                <td> {{ get_user_requests(user) }} </td>
             </tr>
         {% endfor %}
     </table>
