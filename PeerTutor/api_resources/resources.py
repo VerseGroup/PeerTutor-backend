@@ -1,7 +1,7 @@
 from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse, abort
 from PeerTutor.models import User, CourseRequest, Course
-from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist
+from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist
 
 #Registering a user
 
@@ -48,6 +48,13 @@ class UserInfo(Resource):
         abort_if_user_doesnt_exist(user_id)
         user = User.query.get(user_id)
         return user.toJSON()
+
+#Finding info on course
+class CourseInfo(Resource):
+    def get(self, course_id):    
+        abort_if_course_doesnt_exist(course_id)
+        course = Course.query.get(course_id)
+        return course.toJSON()
 
 #Requesting courses
 

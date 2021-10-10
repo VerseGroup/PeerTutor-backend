@@ -28,8 +28,9 @@ app.register_blueprint(admin)
 from PeerTutor.api_resources.resources import RegisterUser
 api.add_resource(RegisterUser, '/RegisterUser')
 
-from PeerTutor.api_resources.resources import UserInfo
+from PeerTutor.api_resources.resources import UserInfo, CourseInfo
 api.add_resource(UserInfo, '/UserInfo/<int:user_id>')
+api.add_resource(CourseInfo, '/CourseInfo/<int:course_id>')
 
 from PeerTutor.api_resources.resources import RequestCourse
 api.add_resource(RequestCourse, '/RequestCourse')
