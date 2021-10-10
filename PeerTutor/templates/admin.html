@@ -21,6 +21,24 @@
             </tr>
         {% endfor %}
     </table>
+
+    <h2> Course Database: </h2>
+    <table class="admin-table">
+        <tr>
+            <th> Name </th>
+            <th> ID </th>
+            <th> Description </th>
+        </tr>
+        {% for course in courses %}
+            <tr>
+                <td> {{ course.name }} </td>
+                <td> {{ course.id }} </td>
+                <td> {{ course.description }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a class="development-link" href="{{ url_for('admin.addCourse')}}"> Add Course? </a>
+    <br>
     <small>
         Note! This is a development page, and will be locked during release to non-registered admins.
     </small>

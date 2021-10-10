@@ -48,3 +48,5 @@ class UserInfo(Resource):
         abort_if_user_doesnt_exist(user_id)
         user = User.query.get(user_id)
         return user.toJSON()
+
+#Requesting courses

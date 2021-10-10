@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend> Add Course </legend>
+            <div>
+                {{ form.name.label() }}
+                
+                {% if form.name.errors %}
+                    {{ form.name() }}
+                    <div>
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name() }}
+                {% endif %}
+            </div>
+            <div>
+                {{ form.description.label() }}
+                
+                {% if form.description.errors %}
+                    {{ form.description() }}
+                    <div>
+                        {% for error in form.description.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.description() }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div>
+            {{ form.submit()}}
+        </div>
+    </form>
+</div>
+{% endblock content %}
