@@ -79,6 +79,7 @@ class RequestCourse(Resource):
         course = Course.query.get(course_id)
 
         request = CourseRequest(user=user, course=course, relationship=relationship)
+        db.session.add(request)
         
         try:  
             db.session.commit()

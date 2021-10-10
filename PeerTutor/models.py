@@ -10,6 +10,7 @@ from flask import app, jsonify
 #    return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -22,7 +23,7 @@ class User(db.Model, UserMixin):
 
     #Relationships
     schedule = db.relationship('Schedule', backref='user', lazy=True)
-    matches = db.relationship('Match', backref='user', lazy=True)
+    matches = db.Column(db.PickleType, nullable=True)
     requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
     def toJSON(self):
@@ -54,6 +55,7 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', 'Permission:{self.permission}', id:{self.id})"
 
 class Schedule(db.Model):
+    __tablename__ = 'schedule'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     frees = db.Column(db.PickleType, nullable=False)
@@ -62,23 +64,25 @@ class Schedule(db.Model):
         return f"{User.query.get(self.user_id)} has the following frees: {self.frees}"
 
 class Course(db.Model):
+    __tablename__ = 'course'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    requests = db.relationship('CourseRequest', backref='course', lazy=True)
     
     def __repr__(self):
         return f"Course('{self.title}')"
 
 class CourseRequest(db.Model):
+    __tablename__ = 'courseRequest'
     id = db.Column(db.Integer, primary_key=True)
-    tutor_id = db.Column('tutor_id',db.Integer, db.ForeignKey('user.id'), nullable=False)
-    course_id = db.Column('course_id',db.Integer, db.ForeignKey('course.id'), nullable=False)
+    tutor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    course_id = db.Column(db.Integer, nullable=False)
     relationship = db.Column('relationship', db.Boolean, nullable=False)
 
 class Match(db.Model):
+    __tablename__ = 'match'
     id = db.Column(db.Integer, primary_key=True)
-    tutor_id = db.Column('tutor_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    tutee_id = db.Column('tutee_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    course_id = db.Column('course_id', db.Integer, db.ForeignKey('course.id'), nullable=False),
+    tutor_id = db.Column(db.Integer, nullable=False)
+    tutee_id = db.Column(db.Integer, nullable=False)
+    course_id = db.Column(db.Integer, nullable=False)
     period = db.Column('period', db.String, nullable=False)
