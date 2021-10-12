@@ -73,7 +73,7 @@ class FindMatchByTutee(Resource):
         print(tutee_id)
         abort_if_user_doesnt_exist(tutee_id)
         match = Match.query.filter_by(tutee_id=tutee_id).first()
-        abort_if_no_matches(match=match, id=tutor_id)
+        abort_if_no_matches(match=match, id=tutee_id)
         return match.toJSON()
         
 
