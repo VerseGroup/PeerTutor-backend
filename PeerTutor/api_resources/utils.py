@@ -8,3 +8,7 @@ def abort_if_user_doesnt_exist(user_id):
 def abort_if_course_doesnt_exist(course_id):
     if Course.query.get(course_id) is None:
         abort(404, message= f"Course '{course_id}' doesn't exist") 
+
+def abort_if_no_matches(match, id):
+    if match is None:
+        abort(404, message= f"No matches found for user '{id}'")
