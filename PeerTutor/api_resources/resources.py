@@ -44,7 +44,6 @@ class RegisterUser(Resource):
             }, 400
 
 #Finding info on user
-  
 class UserInfo(Resource):
     def get(self, user_id):
         abort_if_user_doesnt_exist(user_id)
@@ -65,21 +64,18 @@ class FindMatchByTutor(Resource):
         matches = Match.query.filter_by(tutor_id=tutor_id).all()
         abort_if_no_matches(matches=matches, id=tutor_id)
         json_matches = list_of_matches_to_JSON(matches)
-        return json_matches
-
-
+        return json_matches, 200
 
 #Finding info on match with tutee id
 class FindMatchByTutee(Resource):
     def get(self, tutee_id):    
         abort_if_user_doesnt_exist(tutee_id)
-        match = Match.query.filter_by(tutee_id=tutee_id).first()
-        abort_if_no_matches(match=match, id=tutee_id)
-        return match.toJSON()
-        
+        matches = Match.query.filter_by(tutee_id=tutee_id).all()
+        abort_if_no_matches(matches=matches, id=tutee_id)
+        json_matches = list_of_matches_to_JSON(matches)
+        return json_matches, 200
 
 #Requesting courses
-
 request_parser = reqparse.RequestParser(bundle_errors=True)
 
 class RequestCourse(Resource):
