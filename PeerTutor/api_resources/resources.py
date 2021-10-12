@@ -3,10 +3,8 @@ from flask_restful import reqparse, abort
 from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON
 from flask import jsonify
-import json
 
 #Registering a user
-
 register_parser = reqparse.RequestParser(bundle_errors=True)
 
 class RegisterUser(Resource):

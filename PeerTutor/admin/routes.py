@@ -1,9 +1,9 @@
 from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint)
 from flask_login import current_user, login_required
-from PeerTutor import db
+from PeerTutor import db, bcrypt
 from PeerTutor.models import User, Course, CourseRequest, Match
-from PeerTutor.admin.forms import AddCourseForm
+from PeerTutor.admin.forms import AddCourseForm, AddUserForm
 from PeerTutor.admin.utils import extract, get_user_requests
 
 admin = Blueprint('admin', __name__)
@@ -18,7 +18,7 @@ def adminPage():
         get_user_requests=get_user_requests, requests=requests, extract=extract,
         matches=matches)
 
-@admin.route('/admin/add', methods=['GET', 'POST'])
+@admin.route('/admin/addCourse', methods=['GET', 'POST'])
 def addCourse():
     form = AddCourseForm()
     if form.validate_on_submit():
@@ -28,3 +28,16 @@ def addCourse():
         flash('Your post has been created!', 'alert')
         return redirect(url_for('admin.adminPage'))
     return render_template('create_course.html', form=form)
+
+@admin.route('/admin/addUser', methods=['GET', 'POST'])
+def addUser():
+    form = AddUserForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, password=hashed_password,
+        grade=form.grade.data, email=form.email.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your user has been created', 'alert')
+        return redirect(url_for('admin.adminPage'))
+    return render_template('create_user.html', form=form)
