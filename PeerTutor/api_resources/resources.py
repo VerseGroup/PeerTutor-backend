@@ -1,7 +1,8 @@
 from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse, abort
-from PeerTutor.models import User, CourseRequest, Course
+from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist
+from flask import jsonify
 
 #Registering a user
 
@@ -55,6 +56,17 @@ class CourseInfo(Resource):
         abort_if_course_doesnt_exist(course_id)
         course = Course.query.get(course_id)
         return course.toJSON()
+
+#Finding info on match with tutor id
+class FindMatchByTutor(Resource):
+    def get(self, tutor_id):    
+        print(tutor_id)
+        abort_if_user_doesnt_exist(tutor_id)
+        matches = Match.query.filter_by(tutor_id=tutor_id).all()
+        matches_array = []
+        for match in matches:
+            matches_array.append(match)
+        return matches_array
 
 #Requesting courses
 
