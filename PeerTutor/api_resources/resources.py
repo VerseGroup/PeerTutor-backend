@@ -65,6 +65,14 @@ class FindMatchByTutor(Resource):
         abort_if_user_doesnt_exist(tutor_id)
         match = Match.query.filter_by(tutor_id=tutor_id).first()
         return match.toJSON()
+
+#Finding info on match with tutee id
+class FindMatchByTutee(Resource):
+    def get(self, tutee_id):    
+        print(tutee_id)
+        abort_if_user_doesnt_exist(tutee_id)
+        match = Match.query.filter_by(tutee_id=tutee_id).first()
+        return match.toJSON()
         
 
 #Requesting courses
