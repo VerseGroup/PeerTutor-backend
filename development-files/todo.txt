@@ -9,4 +9,6 @@ IN API
 5. courses a user teaches vs wants to learn
 + a lot more
 
+MORE validators needed for all the forms 
+
 Deploy

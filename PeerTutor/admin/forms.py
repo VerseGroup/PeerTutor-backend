@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, PasswordField, IntegerField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, EqualTo
 from PeerTutor.models import User
 
 class AddCourseForm(FlaskForm):
@@ -12,6 +12,7 @@ class AddUserForm(FlaskForm):
     username = StringField('Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     grade = IntegerField('Grade', validators=[DataRequired()])
     submit = SubmitField('Add')
 
