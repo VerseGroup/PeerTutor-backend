@@ -94,3 +94,14 @@ class Match(db.Model):
     tutee_id = db.Column(db.Integer, nullable=False)
     course_id = db.Column(db.Integer, nullable=False)
     period = db.Column('period', db.String, nullable=False)
+
+    def toJSON(self):
+        return jsonify(
+            {
+                "id": self.id,
+                "tutor_id": self.tutor_id,
+                "tutee_id": self.tutee_id,
+                "course_id": self.course_id,
+                "period": self.period
+            }
+        )

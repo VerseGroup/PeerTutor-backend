@@ -3,6 +3,7 @@ from flask_restful import reqparse, abort
 from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist
 from flask import jsonify
+import json
 
 #Registering a user
 
@@ -62,11 +63,9 @@ class FindMatchByTutor(Resource):
     def get(self, tutor_id):    
         print(tutor_id)
         abort_if_user_doesnt_exist(tutor_id)
-        matches = Match.query.filter_by(tutor_id=tutor_id).all()
-        matches_array = []
-        for match in matches:
-            matches_array.append(match)
-        return matches_array
+        match = Match.query.filter_by(tutor_id=tutor_id).first()
+        return match.toJSON()
+        
 
 #Requesting courses
 
