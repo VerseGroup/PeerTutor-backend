@@ -87,6 +87,14 @@ class CourseRequest(db.Model):
     course_id = db.Column(db.Integer, nullable=False)
     relationship = db.Column('relationship', db.Boolean, nullable=False)
 
+    def toJSON(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "course_id": self.course_id,
+            "relationship": self.relationship
+        }
+
 class Match(db.Model):
     __tablename__ = 'match'
     id = db.Column(db.Integer, primary_key=True)
