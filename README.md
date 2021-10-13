@@ -36,7 +36,6 @@ variable's name, the equal sign, and the value in quotes. Exclude the comments d
 export EMAIL_PASS='' #add an email password
 export EMAIL_USERNAME='' #add an email
 export SECRET_KEY='afa89g90a1j092310n3i012n3i03' #can be any random string during the development stage
-export SQLALCHEMY_DATABASE_URI = 'sqlite:///PeerTutor.db'
 ```
 
 <br>
