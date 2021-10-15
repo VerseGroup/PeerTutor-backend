@@ -86,6 +86,7 @@ class CourseRequest(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     course_id = db.Column(db.Integer, nullable=False)
     relationship = db.Column('relationship', db.Boolean, nullable=False)
+    date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def toJSON(self):
         return {
