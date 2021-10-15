@@ -1,5 +1,4 @@
-from _typeshed import NoneType
-from PeerTutor.models import User, Course, CourseRequest, Match
+from PeerTutor.models import CourseRequest, Match
 from PeerTutor import db
 
 def matchRequests(request): 
