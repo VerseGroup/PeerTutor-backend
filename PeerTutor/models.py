@@ -22,7 +22,6 @@ class User(db.Model, UserMixin):
 
     #Relationships
     schedule = db.relationship('Schedule', backref='user', lazy=True)
-    matches = db.Column(db.PickleType, nullable=True)
     requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
     def toJSON(self):
