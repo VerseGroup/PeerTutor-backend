@@ -2,7 +2,7 @@ from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse, abort
 from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON
-from flask import jsonify
+from PeerTutor.algorithims.match import matchRequests
 
 #Registering a user
 register_parser = reqparse.RequestParser(bundle_errors=True)
@@ -112,15 +112,25 @@ class RequestCourse(Resource):
 
         request = CourseRequest(user=user, course_id=course.id, relationship=relationship)
         db.session.add(request)
-        
+
         try:  
             db.session.commit()
-            return {
-                "message" : "success",
-            }, 201
         except:
             return {
                 "message" : "error in comitting",
             }, 400
+        
+        matchFound = matchRequests(request)
+        #Where matchFound[0] is match or no, and matchFound[1] is match id if applicable
+        
+        if matchFound[0] == False:
+            return {
+                "message" : "Added request successfully",
+            }, 201
+        else:
+            return {
+                "message:" : "Match was found!",
+                "match_id" : matchFound[1]
+            }
   
 

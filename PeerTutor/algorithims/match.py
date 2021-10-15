@@ -28,6 +28,7 @@ def matchRequests(request):
             
     match = checkMatch(request)
     if match is not None:
-        return makeMatch(request, match)
+        makeMatch(request, match)      
+        return [True, match.id]
     else:
-        return None
+        return [False]
