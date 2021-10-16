@@ -1,4 +1,3 @@
-import re
 from PeerTutor.models import CourseRequest, Match, User
 from PeerTutor import db
 from PeerTutor.algorithims.pickleTools import extract
@@ -46,9 +45,13 @@ def matchRequests(request):
                     return [True, free1]
         return None
 
-    def loadFrees(user):
-        return extract(User.qeury.get(user.id).first().schedule.frees)
-            
+    def loadFrees(user_id):
+        schedule = User.query.get(user_id).schedule
+        if len(schedule) > 0:
+            return extract(schedule[0])
+        else:
+            return None
+        
     match = findMatch(request)
     if match is not None:
         makeMatch(request, match)      

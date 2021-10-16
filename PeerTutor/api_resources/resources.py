@@ -1,8 +1,9 @@
 from PeerTutor import Resource, db, bcrypt
-from flask_restful import reqparse, abort
+from flask_restful import reqparse
 from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON
 from PeerTutor.algorithims.match import matchRequests
+from PeerTutor.algorithims.pickleTools import dump
 
 #Registering a user
 register_parser = reqparse.RequestParser(bundle_errors=True)
