@@ -1,17 +1,22 @@
+import re
 from PeerTutor.models import CourseRequest, Match, User
 from PeerTutor import db
+from PeerTutor.algorithims.pickleTools import extract
 
 def matchRequests(request): 
-    def checkMatch(request):
+    def findMatch(request):
         matches = CourseRequest.query.filter_by(course_id=request.course_id, relationship=(not request.relationship)).order_by(CourseRequest.date_added.desc()).all()
         
         best_match = None
-        request_frees = User.qeury.get(request.user_id).first().schedule.frees
+        request_frees = loadFrees(request.user_id)
 
         for match in matches:
-            user_id = match.user_id
-            frees = User.query.get(user_id).first().schedule.frees
-            #Check to see if request frees contains any frees that line up with self.frees
+            frees = loadFrees(match.user_id)
+            anyFrees = checkFreeIntersections(request_frees, frees)
+
+            if anyFrees is not None:
+                best_match = match   
+                break
 
         return best_match
 
@@ -27,14 +32,24 @@ def matchRequests(request):
             tutor_id = request2.user_id
             tutee_id = request1.user_id
 
-        #ADD PERIOD CALCULATOR
-        period = "example"
+        periods = checkFreeIntersections(loadFrees(request1.user_id), loadFrees(request2.user_id))
+        period = periods[1] #potential here to choose the free they want to use 
         
         match = Match(tutor_id=tutor_id, tutee_id=tutee_id, course_id=request1.course_id, period=period)
         db.session.add(match)
         db.session.commit()
+
+    def checkFreeIntersections(frees1, frees2):
+        for free1 in frees1:
+            for free2 in frees2:
+                if free1 == free2:
+                    return [True, free1]
+        return None
+
+    def loadFrees(user):
+        return extract(User.qeury.get(user.id).first().schedule.frees)
             
-    match = checkMatch(request)
+    match = findMatch(request)
     if match is not None:
         makeMatch(request, match)      
         return [True, match.id]

@@ -126,10 +126,12 @@ class RequestCourse(Resource):
         if matchFound[0] == False:
             return {
                 "message" : "Added request successfully",
+                "match_found" : False
             }, 201
         else:
             return {
                 "message:" : "Match was found!",
+                "match_found" : True,
                 "match_id" : matchFound[1]
             }
   
