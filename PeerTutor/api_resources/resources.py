@@ -136,4 +136,30 @@ class RequestCourse(Resource):
                 "match_id" : matchFound[1]
             }
   
+# Login Users
+request_parser = reqparse.RequestParser(bundle_errors=True)
 
+class LoginUser(Resource):
+    register_parser.add_argument('username', required=True, help='Need username')
+    register_parser.add_argument('password', required=True, help='Need password')
+
+    def get(self):
+        return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 400
+
+    def post(self):
+        
+        #parsing args
+        args = request_parser.parse_args()
+        username = args['username']
+        password = args['password']
+
+        user = User.query.filter_by(username=username).first()
+        
+        if user and bcrypt.check_password_hash(user.password, password):
+            return {
+                "logged_in" : True
+            }
+        else:
+            return {
+                "logged_in" : False
+            }
