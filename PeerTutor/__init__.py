@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from PeerTutor.config import Config
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api #Don't delete Resource
 
 app = Flask(__name__)
 app.config.from_object(Config)
