@@ -1,13 +1,13 @@
 from sqlalchemy.orm import relationship
-from PeerTutor import db #,login_manager
+from PeerTutor import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import app, jsonify
 
-#@login_manager.user_loader
-#def load_user(user_id):
-#    return User.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+   return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
