@@ -1,10 +1,19 @@
-from PeerTutor.models import CourseRequest, Match
+from PeerTutor.models import CourseRequest, Match, User
 from PeerTutor import db
 
 def matchRequests(request): 
     def checkMatch(request):
-        match = CourseRequest.query.filter_by(course_id=request.course_id, relationship=(not request.relationship)).order_by(CourseRequest.date_added.desc()).first()
-        return match
+        matches = CourseRequest.query.filter_by(course_id=request.course_id, relationship=(not request.relationship)).order_by(CourseRequest.date_added.desc()).all()
+        
+        best_match = None
+        request_frees = User.qeury.get(request.user_id).first().schedule.frees
+
+        for match in matches:
+            user_id = match.user_id
+            frees = User.query.get(user_id).first().schedule.frees
+            #Check to see if request frees contains any frees that line up with self.frees
+
+        return best_match
 
     def makeMatch(request1, request2):
         db.session.delete(request1)
