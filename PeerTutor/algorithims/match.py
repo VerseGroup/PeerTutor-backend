@@ -39,16 +39,17 @@ def matchRequests(request):
         db.session.commit()
 
     def checkFreeIntersections(frees1, frees2):
-        for free1 in frees1:
-            for free2 in frees2:
-                if free1 == free2:
-                    return [True, free1]
+        if frees1 is not None and frees2 is not None:
+            for free1 in frees1:
+                for free2 in frees2:
+                    if free1 == free2:
+                        return [True, free1]
         return None
 
     def loadFrees(user_id):
         schedule = User.query.get(user_id).schedule
         if len(schedule) > 0:
-            return extract(schedule[0])
+            return extract(schedule[0].frees)
         else:
             return None
         
