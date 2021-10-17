@@ -4,6 +4,7 @@ from PeerTutor.models import User, CourseRequest, Course, Match
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.algorithims.pickleTools import dump
+from flask_login import login_user, current_user, logout_user, login_required
 
 #Registering a user
 register_parser = reqparse.RequestParser(bundle_errors=True)
@@ -156,10 +157,32 @@ class LoginUser(Resource):
         user = User.query.filter_by(username=username).first()
         
         if user and bcrypt.check_password_hash(user.password, password):
+            login_user(user)
             return {
                 "logged_in" : True
             }
         else:
             return {
                 "logged_in" : False
+            }
+
+#Logout user 
+class LogoutUser(Resource):
+    def post(self):
+        try: 
+            logout_user()
+        except:
+            return {
+                "logged_out" : False,
+                "message" : "Error with logout (Code 1)"
+            }
+        if not current_user:
+            return {
+                "logged_out" : False,
+                "message" : "Logout failed (Code 2"
+            }
+        else:
+            return {
+                "logged_out" : True,
+                "message" : "Successful logout"
             }
