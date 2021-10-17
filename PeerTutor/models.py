@@ -4,6 +4,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import app, jsonify
+from PeerTutor.algorithims.pickleTools import extract
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -18,7 +19,7 @@ class User(db.Model, UserMixin):
     permission = db.Column(db.Integer, default='1')
     grade = db.Column(db.Integer, nullable=False)
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    gradeLevels = db.Column(db.String(120), default="8,9,10,11,12") #8 means all middle school
+    gradeLevels = db.Column(db.String(20), default="8,9,10,11,12") #8 means all middle school
 
     #Relationships
     schedule = db.relationship('Schedule', backref='user', lazy=True)
@@ -32,7 +33,9 @@ class User(db.Model, UserMixin):
                 "email": self.email,
                 "grade" : self.grade,
                 "date-joined" : self.date_joined,
-                "permission" : self.permission
+                "permission" : self.permission,
+                "frees" : extract(self.schedule[0].frees),
+                "teachable-grades" : self.gradeLevels
             }
         )
 
