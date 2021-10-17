@@ -15,12 +15,12 @@
           <div class="left-link-group">
             <a class="link left-link" href="{{ url_for('main.home') }}">Home</a>
             <a class="link left-link" href="{{ url_for('main.home') }}">About</a>
-            <a class="link left-link" href="{{ url_for('main.home')}}">Books</a>
-            <a class="link left-link" href="{{ url_for('main.home')}}">Courses</a>
           </div>
 
           <div class="right-link-group">
           {% if current_user.is_authenticated %}
+            <a class="link right-link" href=" {{ url_for('main.home') }}">Sessions</a>
+            <a class="link right-link" href=" {{ url_for('main.home') }}">Requests</a>
             <a class="link right-link" href=" {{ url_for('main.home') }}">Account</a>
             <a class="link right-link" href=" {{ url_for('main.home') }}">Logout</a>
           {% else %}
