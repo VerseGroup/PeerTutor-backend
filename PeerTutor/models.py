@@ -32,10 +32,10 @@ class User(db.Model, UserMixin):
                 "username" : self.username,
                 "email": self.email,
                 "grade" : self.grade,
-                "date-joined" : self.date_joined,
+                "joinDate" : self.date_joined,
                 "permission" : self.permission,
                 "frees" : extract(self.schedule[0].frees),
-                "teachable-grades" : self.gradeLevels
+                "teachable_grades" : self.gradeLevels
             }
         )
 
