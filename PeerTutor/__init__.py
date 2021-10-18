@@ -38,7 +38,7 @@ api.add_resource(LogoutUser, '/api/logout')
 
 from PeerTutor.api_resources.resources import UserInfo, CourseInfo, FindMatchByTutor, FindMatchByTutee, FindCourseRequestsById 
 api.add_resource(UserInfo, '/api/user/<int:user_id>')
-api.add_resource(CourseInfo, '/api/courseinfo/<int:course_id>')
+api.add_resource(CourseInfo, '/api/course/<int:course_id>')
 api.add_resource(FindMatchByTutor, '/api/findmatchbytutor/<int:tutor_id>')
 api.add_resource(FindMatchByTutee, '/api/findmatchbytutee/<int:tutee_id>')
 api.add_resource(FindCourseRequestsById, '/api/findcourserequestbyid/<int:id>')
