@@ -8,46 +8,164 @@
         Currently in development stage. Check back later for an official release!
     </p>
     <p>
-        In order to use the API, use the 'curl' method in terminal
+        In order to use the API, use the 'curl' method in terminal or a URL Session of some kind that supports both GET and POST requests
     </p>
     <p style="text-decoration:underline">
-        Here are currently allowed API Requests:
+        Currently Allowed Api Requests:
     </p>
+
+    <hr>
     <p>
         Look up a user (GET) @ /api/user/#
     </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        {
+            "email": "example2@gmail.com", 
+            "frees": [
+              "d1p6"
+            ], 
+            "grade": 11, 
+            "id": 2, 
+            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+            "permission": 1, 
+            "teachableGrades": "8,9,10,11,12", 
+            "username": "example2"
+        }
+    </p>
+
+    <hr>
     <p>
         Look up a course (GET) @ /api/course/#
     </p>
-    <p> 
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        {
+            "description": "Calc", 
+            "id": 1, 
+            "name": "Math"
+        }
+    </p>
+
+    <hr>
+    <p>
         Find matches by tutor id (GET) @ /api/findmatchbytutee/# 
     </p>
+    </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        {
+            "matches: ": [
+              {
+                "course_id": 1, 
+                "id": 1, 
+                "period": "d1p6", 
+                "tutee_id": 2, 
+                "tutor_id": 1
+              }
+            ]
+        }
+    </p>
+
+    <hr>
     <p>
         Find matches by tutee id (GET) @ /api/findmatchbytutor/#
     </p>
+    </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        {
+            "matches: ": [
+              {
+                "course_id": 1, 
+                "id": 1, 
+                "period": "d1p6", 
+                "tutee_id": 2, 
+                "tutor_id": 1
+              }
+            ]
+        }
+    </p>
+
+    <hr>
     <p>
         Find course requests by id (GET) @ /api/findcourserequestsbyid/#
     </p>
+    </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        {
+            "id": 2,
+            "user_id": 1,
+            "course_id": 1,
+            "relationship": True
+        }
+    </p>
+
+    <hr>
     <p>
         Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
             -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
     </p>
+    </p>
+    <small> Parameters: username, email, grade, password, frees </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        
+    </p>
+
+    <hr>
     <p>
         Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
             -d "course_id=2" -d "relationship=True" -X POST -v
-        where relationship True = teach and relationship False = learn 
+        
     </p>
+    <p> Notes: Relationship True suggests teacher and relationship False suggests student </p>
+    <small> Parameters: user_id, course_id, relationship</small>
+    <h5> Example return JSON: </h4>
+    <p>
+        
+    </p>
+
+
     <h2> The following commands only work with a URL Session of some kind </h2>
     <small> (Because they rely on flask-login) </small>
+    
+    <hr>
     <p>
-        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v
+        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v     
     </p>
+    <small> Parameters: username, password </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        
+    </p>
+
+    <hr>
     <p>
         Search for current logged-in user (GET) @ /api/user
     </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        
+    </p>
+
+    <hr>
     <p>
         Logout user (POST) @ /api/logout
     </p>
+    <small> No Parameters </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        
+    </p>
+    
     <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
 {% endblock %}
