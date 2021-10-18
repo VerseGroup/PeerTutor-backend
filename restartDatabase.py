@@ -15,7 +15,6 @@ def addSomething(toAdd):
 #dummy data to speed up restart
 from PeerTutor.models import User, Course, CourseRequest
 user = User(username="example", email="example@gmail.com", password="123", grade=11)
-Schedule 
 user2 = User(username="example2", email="example2@gmail.com", password="123", grade=11)
 user3 = User(username="example3", email="example3@gmail.com", password="123", grade=11)
 course = Course(name="Math", description="Calc")
@@ -32,7 +31,10 @@ schedule_user = Schedule(frees=frees_user, user=user)
 frees_user2 = dump(["d1p6"])
 schedule_user2 = Schedule(frees=frees_user2, user=user2)
 
-addSomething([schedule_user, schedule_user2])
+frees_user3 = dump(["d1p7"])
+schedule_user3 = Schedule(frees=frees_user3, user=user3)
+
+addSomething([schedule_user, schedule_user2, schedule_user3])
 db.session.commit()
 
 matchRequests(courseR2)
