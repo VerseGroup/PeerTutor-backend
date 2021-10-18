@@ -113,7 +113,17 @@
             -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
     </p>
     </p>
-    <small> Parameters: username, email, grade, password, frees </small>
+    <small> Parameters: 
+        username (String)
+        
+        email (String)
+        
+        grade (Int)
+        
+        password (String)
+        
+        frees (Undelimited String)
+    </small>
     <h5> Example return JSON: </h4>
     <p>
         
@@ -126,7 +136,14 @@
         
     </p>
     <p> Notes: Relationship True suggests teacher and relationship False suggests student </p>
-    <small> Parameters: user_id, course_id, relationship</small>
+    <small> Parameters: 
+        
+        user_id (Int)
+        
+        course_id (Int)
+        
+        relationship (Boolean -- True->Teacher, False->Student)
+    </small>
     <h5> Example return JSON: </h4>
     <p>
         
@@ -140,7 +157,12 @@
     <p>
         Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v     
     </p>
-    <small> Parameters: username, password </small>
+    <small> Parameters: 
+        
+        username (String)
+        
+        password (String)
+    </small>
     <h5> Example return JSON: </h4>
     <p>
         
