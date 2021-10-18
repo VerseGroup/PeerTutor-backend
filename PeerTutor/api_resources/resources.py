@@ -148,19 +148,20 @@ class RequestCourse(Resource):
             }
   
 # Login Users
-request_parser = reqparse.RequestParser(bundle_errors=True)
+login_parser = reqparse.RequestParser(bundle_errors=True)
 
 class LoginUser(Resource):
-    register_parser.add_argument('username', required=True, help='Need username')
-    register_parser.add_argument('password', required=True, help='Need password')
+    login_parser.add_argument('username', required=True, help='Need username')
+    login_parser.add_argument('password', required=True, help='Need password')
 
     def get(self):
         return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 400
 
     def post(self):
-        
+
         #parsing args
-        args = request_parser.parse_args()
+        args = login_parser.parse_args()
+
         username = args['username']
         password = args['password']
 
