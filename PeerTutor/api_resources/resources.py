@@ -1,6 +1,6 @@
 from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse
-from PeerTutor.models import User, CourseRequest, Course, Match
+from PeerTutor.models import User, CourseRequest, Course, Match, Schedule
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.algorithims.pickleTools import dump
@@ -14,7 +14,8 @@ class RegisterUser(Resource):
     register_parser.add_argument('password', required=True, help='Need password')
     register_parser.add_argument('email', required=True, help='Need email')
     register_parser.add_argument('grade', type=int, required=True, help='Need grade or convert grade to int')
-    
+    register_parser.add_argument('frees', required=True, help='Need frees (do not delimite)')
+
     def get(self):
         return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 400
 
@@ -25,14 +26,23 @@ class RegisterUser(Resource):
         email = args['email']
         password = args['password']
         grade = args['grade']
+        frees= args['frees']
 
         #hashing pw
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
         #registering user
         user = User(username=username, email=email, password=hashed_password, grade=grade)
-        print(user)
         db.session.add(user)
+
+        #creating a schedule with frees
+        free_array = []
+        while len(frees) > 0:
+            free_array.append(frees[0:4])
+            frees = frees[4:len(frees)]
+        schedule = Schedule(user=user, frees=dump(free_array))
+        db.session.add(schedule)
+
         try:  
             db.session.commit()
             return {
