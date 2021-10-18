@@ -17,7 +17,7 @@
         Look up a user (GET) @ /api/user/#
     </p>
     <p>
-        Look up a course (GET) @ api/course/#
+        Look up a course (GET) @ /api/course/#
     </p>
     <p> 
         Find matches by tutor id (GET) @ /api/findmatchbytutee/# 
@@ -29,16 +29,16 @@
         Find course requests by id (GET) @ /api/findcourserequestsbyid/#
     </p>
     <p>
-        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/register -d "username=example2" 
+        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
             -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
     </p>
     <p>
-        Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/request -d "user_id=1" 
+        Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
             -d "course_id=2" -d "relationship=True" -X POST -v
         where relationship True = teach and relationship False = learn 
     </p>
     <p>
-        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/login -d "username=example" -d "password=123" -X POST -v
+        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v
     </p>
     <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
