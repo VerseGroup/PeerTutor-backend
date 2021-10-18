@@ -1,7 +1,7 @@
 #THIS FILE IS SOLEY FOR DEVELOPMENT PURPOSES AND SHOULD BE DELETED BEFORE DEPLOYMENT
 
 from sqlalchemy.orm import relationship
-from PeerTutor import db
+from PeerTutor import db, bcrypt
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.algorithims.pickleTools import dump
 db.drop_all()
@@ -14,9 +14,10 @@ def addSomething(toAdd):
 
 #dummy data to speed up restart
 from PeerTutor.models import User, Course, CourseRequest
-user = User(username="example", email="example@gmail.com", password="123", grade=11)
-user2 = User(username="example2", email="example2@gmail.com", password="123", grade=11)
-user3 = User(username="example3", email="example3@gmail.com", password="123", grade=11)
+hashed_password = bcrypt.generate_password_hash("123").decode('utf-8')
+user = User(username="example", email="example@gmail.com", password=hashed_password, grade=11)
+user2 = User(username="example2", email="example2@gmail.com", password=hashed_password, grade=11)
+user3 = User(username="example3", email="example3@gmail.com", password=hashed_password, grade=11)
 course = Course(name="Math", description="Calc")
 course2 = Course(name="English", description="Essay")
 course3 = Course(name="Chem", description="Moles")
