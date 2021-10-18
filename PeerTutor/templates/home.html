@@ -37,8 +37,16 @@
             -d "course_id=2" -d "relationship=True" -X POST -v
         where relationship True = teach and relationship False = learn 
     </p>
+    <h2> The following commands only work with a URL Session of some kind </h2>
+    <small> (Because they rely on flask-login) </small>
     <p>
         Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v
+    </p>
+    <p>
+        Search for current logged-in user (GET) @ /api/user
+    </p>
+    <p>
+        Logout user (POST) @ /api/logout
     </p>
     <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>

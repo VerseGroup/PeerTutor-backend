@@ -179,7 +179,7 @@ class LoginUser(Resource):
 
 #Logout user 
 class LogoutUser(Resource):
-    def get(self):
+    def post(self):
         try:
             print(current_user.username)
         except:
