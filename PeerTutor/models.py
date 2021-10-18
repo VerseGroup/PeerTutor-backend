@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
                 "joinDate" : self.date_joined,
                 "permission" : self.permission,
                 "frees" : extract(self.schedule[0].frees),
-                "teachable_grades" : self.gradeLevels
+                "teachableGrades" : self.gradeLevels
             }
         )
 
