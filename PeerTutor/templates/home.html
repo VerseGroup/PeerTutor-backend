@@ -4,50 +4,5 @@
 
 {% block content %}
     <h1> Welcome to PeerTutor! </h1>
-    <p> 
-        Currently in development stage. Check back later for an official release!
-    </p>
-    <p>
-        In order to use the API, use the 'curl' method in terminal
-    </p>
-    <p style="text-decoration:underline">
-        Here are currently allowed API Requests:
-    </p>
-    <p>
-        Look up a user (GET) @ /api/user/#
-    </p>
-    <p>
-        Look up a course (GET) @ /api/course/#
-    </p>
-    <p> 
-        Find matches by tutor id (GET) @ /api/findmatchbytutee/# 
-    </p>
-    <p>
-        Find matches by tutee id (GET) @ /api/findmatchbytutor/#
-    </p>
-    <p>
-        Find course requests by id (GET) @ /api/findcourserequestsbyid/#
-    </p>
-    <p>
-        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
-            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
-    </p>
-    <p>
-        Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
-            -d "course_id=2" -d "relationship=True" -X POST -v
-        where relationship True = teach and relationship False = learn 
-    </p>
-    <h2> The following commands only work with a URL Session of some kind </h2>
-    <small> (Because they rely on flask-login) </small>
-    <p>
-        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v
-    </p>
-    <p>
-        Search for current logged-in user (GET) @ /api/user
-    </p>
-    <p>
-        Logout user (POST) @ /api/logout
-    </p>
-    <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
 {% endblock %}
