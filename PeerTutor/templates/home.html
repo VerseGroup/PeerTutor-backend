@@ -14,29 +14,31 @@
         Here are currently allowed API Requests:
     </p>
     <p>
-        Look up a user @ /UserInfo/# 
+        Look up a user (GET) @ /api/user/#
     </p>
     <p>
-        Look up a course @ /CourseInfo/#
+        Look up a course (GET) @ api/course/#
     </p>
     <p> 
-        Find matches by tutor id @ /FindMatchByTutor/# 
+        Find matches by tutor id (GET) @ /api/findmatchbytutee/# 
     </p>
     <p>
-        Find matches by tutee id @ /FindMatchByTutee/#
+        Find matches by tutee id (GET) @ /api/findmatchbytutor/#
     </p>
     <p>
-        Find course requests by id @ /FindCourseRequestsById/#
+        Find course requests by id (GET) @ /api/findcourserequestsbyid/#
     </p>
     <p>
-        Register a user @ curl http://localhost:5000/RegisterUser -d "username=example2" 
-            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -X POST -v
+        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/register -d "username=example2" 
+            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
     </p>
     <p>
-        Request a course for a user @ curl http://localhost:5000/RequestCourse -d "user_id=1" 
+        Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/request -d "user_id=1" 
             -d "course_id=2" -d "relationship=True" -X POST -v
-        where relationship True = teach and relationship False = learn
-        
+        where relationship True = teach and relationship False = learn 
+    </p>
+    <p>
+        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/login -d "username=example" -d "password=123" -X POST -v
     </p>
     <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
