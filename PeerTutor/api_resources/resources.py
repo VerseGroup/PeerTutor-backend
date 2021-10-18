@@ -179,7 +179,13 @@ class LoginUser(Resource):
 
 #Logout user 
 class LogoutUser(Resource):
-    def post(self):
+    def get(self):
+        try:
+            print(current_user.username)
+        except:
+            return {
+                "message" : "No user logged in"
+            }
         try: 
             logout_user()
         except:
