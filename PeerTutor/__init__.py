@@ -31,17 +31,17 @@ app.register_blueprint(admin)
 
 #Registering API (use 'curl url' to test)
 from PeerTutor.api_resources.resources import RegisterUser, LoginUser, LogoutUser, CurrentUserInfo
-api.add_resource(RegisterUser, '/RegisterUser')
-api.add_resource(LoginUser, '/LoginUser')
-api.add_resource(CurrentUserInfo, '/UserInfo')
-api.add_resource(LogoutUser, '/LogoutUser')
+api.add_resource(RegisterUser, '/api/RegisterUser')
+api.add_resource(LoginUser, '/api/LoginUser')
+api.add_resource(CurrentUserInfo, '/api/UserInfo')
+api.add_resource(LogoutUser, '/api/LogoutUser')
 
 from PeerTutor.api_resources.resources import UserInfo, CourseInfo, FindMatchByTutor, FindMatchByTutee, FindCourseRequestsById 
 api.add_resource(UserInfo, '/api/user/<int:user_id>')
-api.add_resource(CourseInfo, '/CourseInfo/<int:course_id>')
-api.add_resource(FindMatchByTutor, '/FindMatchByTutor/<int:tutor_id>')
-api.add_resource(FindMatchByTutee, '/FindMatchByTutee/<int:tutee_id>')
-api.add_resource(FindCourseRequestsById, '/FindCourseRequestsById/<int:id>')
+api.add_resource(CourseInfo, '/api/courseinfo/<int:course_id>')
+api.add_resource(FindMatchByTutor, '/api/FindMatchByTutor/<int:tutor_id>')
+api.add_resource(FindMatchByTutee, '/api/FindMatchByTutee/<int:tutee_id>')
+api.add_resource(FindCourseRequestsById, '/api/FindCourseRequestsById/<int:id>')
 
 from PeerTutor.api_resources.resources import RequestCourse
-api.add_resource(RequestCourse, '/RequestCourse')
+api.add_resource(RequestCourse, '/api/RequestCourse')
