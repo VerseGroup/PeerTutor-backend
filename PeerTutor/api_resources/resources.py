@@ -189,10 +189,20 @@ class LogoutUser(Resource):
         if not current_user:
             return {
                 "logged_out" : False,
-                "message" : "Logout failed (Code 2"
+                "message" : "Logout failed (Code 2)"
             }
         else:
             return {
                 "logged_out" : True,
                 "message" : "Successful logout"
+            }
+
+# User Info on Current Logged in User
+class CurrentUserInfo(Resource):
+    def get(self):
+        if current_user:
+            return current_user.toJSON()
+        else:
+            return {
+                "message" : "No current user. Please log in or specify a user to search for"
             }
