@@ -93,7 +93,7 @@
 
     <hr>
     <p>
-        Find course requests by id (GET) @ /api/findcourserequestsbyid/#
+        Find match requests by id (GET) @ /api/findmatchrequestbyid/#
     </p>
     </p>
     <small> No Parameters (GET) </small>
@@ -134,11 +134,12 @@
 
     <hr>
     <p>
-        Request a course for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
+        Request a match for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
             -d "course_id=2" -d "relationship=True" -X POST -v
         
     </p>
-    <p> Notes: Relationship True suggests teacher and relationship False suggests student. <em> Sending a course request will also automatically run the match function to check for new possible matches! </em> </p>
+    <p> Notes: Relationship True suggests teacher and relationship False suggests student. <em> Sending a course request will also automatically run the match function to check for new possible matches! </em> 
+    If a match was not found, it will send a pending request that will be matched when another applicable request is made </p>
     <small> Parameters: 
         <br>
         user_id (Int)
