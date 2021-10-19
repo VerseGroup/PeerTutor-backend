@@ -46,11 +46,11 @@ class RegisterUser(Resource):
         try:  
             db.session.commit()
             return {
-                "message" : "success",
+                "message" : "success"
             }, 201
         except:
             return {
-                "message" : "error (user probably already exists)",
+                "message" : "error (user probably already exists)"
             }, 400
 
 #Finding info on user
@@ -115,7 +115,8 @@ class RequestCourse(Resource):
         #checking courses and users exists
         if User.query.get(user_id) is None or Course.query.get(course_id) is None:
             return {
-                "message" : "User or Course don't exist"
+                "message" : "User or Course don't exist",
+                "match_found" : False
             }
 
         #Get user
@@ -130,6 +131,7 @@ class RequestCourse(Resource):
         except:
             return {
                 "message" : "error in comitting",
+                "match_found" : False
             }, 400
         
         matchFound = matchRequests(request)
@@ -184,24 +186,25 @@ class LogoutUser(Resource):
             print(current_user.username)
         except:
             return {
-                "message" : "No user logged in"
+                "logged_out" : False,
+                "message" : "no user logged in"
             }
         try: 
             logout_user()
         except:
             return {
                 "logged_out" : False,
-                "message" : "Error with logout (Code 1)"
+                "message" : "error with logout (code 1)"
             }
         if not current_user:
             return {
                 "logged_out" : False,
-                "message" : "Logout failed (Code 2)"
+                "message" : "logout failed (code 2)"
             }
         else:
             return {
                 "logged_out" : True,
-                "message" : "Successful logout"
+                "message" : "successful logout"
             }
 
 # User Info on Current Logged in User

@@ -127,7 +127,9 @@
     </small>
     <h5> Example return JSON: </h4>
     <p>
-        
+        {
+            "message" : "success"
+        }
     </p>
 
     <hr>
@@ -147,7 +149,11 @@
     </small>
     <h5> Example return JSON: </h4>
     <p>
-        
+        {
+            "message:" : "Match was found!",
+            "match_found" : True,
+            "match_id" : 2
+        }
     </p>
 
     <hr>
@@ -166,7 +172,9 @@
     </small>
     <h5> Example return JSON: </h4>
     <p>
-        
+        {
+            "logged-in" : True
+        }
     </p>
 
     <hr>
@@ -176,7 +184,18 @@
     <small> No Parameters (GET) </small>
     <h5> Example return JSON: </h4>
     <p>
-        
+        {
+            "email": "example2@gmail.com", 
+            "frees": [
+              "d1p6"
+            ], 
+            "grade": 11, 
+            "id": 2, 
+            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+            "permission": 1, 
+            "teachableGrades": "8,9,10,11,12", 
+            "username": "example2"
+        }
     </p>
 
     <hr>
@@ -186,7 +205,10 @@
     <small> No Parameters </small>
     <h5> Example return JSON: </h4>
     <p>
-        
+        {
+            "logged-out" : True
+            "message" : "successful logout"
+        }
     </p>
     
     <br> <br>
