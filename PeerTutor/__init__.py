@@ -41,7 +41,7 @@ api.add_resource(UserInfo, '/api/user/<int:user_id>')
 api.add_resource(CourseInfo, '/api/course/<int:course_id>')
 api.add_resource(FindMatchByTutor, '/api/findmatchbytutor/<int:tutor_id>')
 api.add_resource(FindMatchByTutee, '/api/findmatchbytutee/<int:tutee_id>')
-api.add_resource(FindCourseRequestsById, '/api/findcourserequestbyid/<int:id>')
+api.add_resource(FindCourseRequestsById, '/api/findmatchrequestbyid/<int:id>')
 
 from PeerTutor.api_resources.resources import RequestCourse
 api.add_resource(RequestCourse, '/api/request')
