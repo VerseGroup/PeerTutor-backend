@@ -10,13 +10,17 @@ admin = Blueprint('admin', __name__)
 
 @admin.route("/admin")
 def adminPage():
-    users = User.query.order_by(User.date_joined.desc()).all()
-    courses = Course.query.order_by(Course.id.desc()).all()
-    requests = CourseRequest.query.order_by(CourseRequest.id.desc()).all()
-    matches = Match.query.order_by(Match.id.desc()).all()
-    return render_template('/admin.html', users=users, courses=courses, 
-        get_user_requests=get_user_requests, requests=requests, extract=extract,
-        matches=matches)
+    if current_user.permission < 4:
+        flash('You don\'t have permission to do that!', 'alert')
+        return redirect(url_for('main.home'))
+    else:
+        users = User.query.order_by(User.date_joined.desc()).all()
+        courses = Course.query.order_by(Course.id.desc()).all()
+        requests = CourseRequest.query.order_by(CourseRequest.id.desc()).all()
+        matches = Match.query.order_by(Match.id.desc()).all()
+        return render_template('/admin.html', users=users, courses=courses, 
+            get_user_requests=get_user_requests, requests=requests, extract=extract,
+            matches=matches)
 
 @admin.route('/admin/addCourse', methods=['GET', 'POST'])
 def addCourse():
