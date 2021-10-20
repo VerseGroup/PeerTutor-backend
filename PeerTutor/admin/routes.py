@@ -32,7 +32,7 @@ def addCourse():
         db.session.commit()
         flash('Your post has been created!', 'alert')
         return redirect(url_for('admin.adminPage'))
-    return render_template('create_course.html', form=form)
+    return render_template('create_course.html', form=form, redirect="admin.adminPage")
 
 @admin.route('/admin/addUser', methods=['GET', 'POST'])
 def addUser():
@@ -45,4 +45,4 @@ def addUser():
         db.session.commit()
         flash('Your user has been created', 'alert')
         return redirect(url_for('admin.adminPage'))
-    return render_template('create_user.html', form=form)
+    return render_template('create_user.html', form=form, redirect="admin.adminPage")
