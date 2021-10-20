@@ -8,6 +8,7 @@ from PeerTutor.admin.utils import extract, get_user_requests
 
 admin = Blueprint('admin', __name__)
 
+@login_required
 @admin.route("/admin")
 def adminPage():
     if current_user.permission < 4:
