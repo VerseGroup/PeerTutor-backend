@@ -18,9 +18,9 @@ api = Api(app)
 login_manager = LoginManager(app)
 
 #Login config for later use
-#login_manager.login_view = 'users.login'
-#login_manager.login_message_category = '#' #add custom class
-#login_manager.login_message = u"Please login"
+login_manager.login_view = 'users.login'
+login_manager.login_message_category = '#' #add custom class
+login_manager.login_message = u"Please login"
 
 #Registering blueprints
 from PeerTutor.main.routes import main
@@ -31,6 +31,9 @@ app.register_blueprint(admin)
 
 from PeerTutor.users.routes import users
 app.register_blueprint(users)
+
+from PeerTutor.tutoring.routes import tutor_functions
+app.register_blueprint(tutor_functions)
 
 #Registering API (use 'curl url' to test)
 from PeerTutor.api_resources.resources import RegisterUser, LoginUser, LogoutUser, CurrentUserInfo
