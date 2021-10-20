@@ -80,7 +80,7 @@ class Course(db.Model):
         )
     
     def __repr__(self):
-        return f"Course('{self.title}')"
+        return f"{self.name}"
 
 class CourseRequest(db.Model):
     __tablename__ = 'courseRequest'

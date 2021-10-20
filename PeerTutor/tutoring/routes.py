@@ -18,16 +18,20 @@ def makeRequest():
     form = RequestMatch()
     if form.validate_on_submit():
 
-        course_id = dict(COURSE_CHOICES).get(form.course.data)
+        course_id = form.course.data
         relationship = dict(TEACHING_CHOICES).get(form.relationship.data)
+        if relationship == "TEACH":
+            relationship = True
+        else:
+            relationship = False
 
-        courseR = CourseRequest(username=current_user, course_id=course_id, 
+        courseR = CourseRequest(user=current_user, course_id=course_id, 
             relationship=relationship)
         
         db.session.add(courseR)
         db.session.commit()
         flash('Sent Request!', 'success')
-        return redirect(url_for('tutoring.requests'))
+        return redirect(url_for('tutor_functions.requests'))
     return render_template('/request.html', form=form)
 
 @login_required
