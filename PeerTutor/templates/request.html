@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} Request {% endblock %}
+
+{% block content %}
+    <div class="#">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="#">
+                <legend class="#"> Make Request! </legend>
+                <div class="#">
+                    {{ form.course.label(class="") }}
+
+                    {% if form.course.errors %}
+                        {{ form.course(class="") }}
+                        <div class="#">
+                            {% for error in form.course.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.course(class="") }}
+                    {% endif %}
+                </div>
+
+                <div class="#">
+                    {{ form.relationship.label(class="") }}
+                    
+                    {% if form.relationship.errors %}
+                        {{ form.relationship(class="") }}
+                        <div class="#">
+                            {% for error in form.relationship.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.relationship(class="") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="#">
+                {{ form.submit(class="")}}
+            </div>
+        </form>
+    </div>
+    <div class="#">
+        <small class="#">
+           Don't want to make a request? <a class="#" href="{{ url_for('tutor_functions.requests')}}"> Sign In</a>
+        </small>
+    </div>
+{% endblock content %}
