@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
 from PeerTutor.models import User
@@ -11,8 +11,8 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email',
         validators=[DataRequired(), Email()])
 
-    phone = StringField('Phone Number (omit "-")', 
-        validators=[DataRequired(), Length(min=10,max=11)])
+    grade = StringField('Grade', 
+        validators=[DataRequired(), Length(min=1, max=2)])
 
     password = PasswordField('Password',
         validators=[DataRequired()])

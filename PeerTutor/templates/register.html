@@ -35,17 +35,17 @@
                     {% endif %}
                 </div>
                 <div class="#">
-                    {{ form.phone.label(class="") }}
+                    {{ form.grade.label(class="") }}
                     
-                    {% if form.phone.errors %}
-                        {{ form.phone(class="") }}
+                    {% if form.grade.errors %}
+                        {{ form.grade(class="") }}
                         <div class="#">
-                            {% for error in form.phone.errors %}
+                            {% for error in form.grade.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.phone(class="") }}
+                        {{ form.grade(class="") }}
                     {% endif %}
                 </div>
                 <div class="#">
