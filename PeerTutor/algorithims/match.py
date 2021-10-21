@@ -56,6 +56,6 @@ def matchRequests(request):
     match = findMatch(request)
     if match is not None:
         makeMatch(request, match)      
-        return [True, match.id]
+        return [True, match]
     else:
         return [False]

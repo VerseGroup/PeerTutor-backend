@@ -91,12 +91,13 @@ class CourseRequest(db.Model):
     relationship = db.Column('relationship', db.Boolean, nullable=False)
     date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def toJSON(self):
+    def toJSON(self, message="success"):
         return {
             "id": self.id,
             "user_id": self.user_id,
             "course_id": self.course_id,
-            "relationship": self.relationship
+            "relationship": self.relationship,
+            "message" : message
         }
 
 class Match(db.Model):
@@ -107,11 +108,12 @@ class Match(db.Model):
     course_id = db.Column(db.Integer, nullable=False)
     period = db.Column('period', db.String, nullable=False)
 
-    def toJSON(self):
+    def toJSON(self, message="success"):
         return {
             "id": self.id,
             "tutor_id": self.tutor_id,
             "tutee_id": self.tutee_id,
             "course_id": self.course_id,
-            "period": self.period
+            "period": self.period,
+            "message" : message
         }

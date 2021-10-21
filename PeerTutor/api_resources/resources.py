@@ -147,16 +147,9 @@ class RequestCourse(Resource):
         #Where matchFound[0] is match or no, and matchFound[1] is match id if applicable
         
         if matchFound[0] == False:
-            return {
-                "message" : "Added request successfully",
-                "match_found" : False
-            }, 201
+            return request.toJSON(message="Success. No match found.")
         else:
-            return {
-                "message:" : "Match was found!",
-                "match_found" : True,
-                "match_id" : matchFound[1]
-            }
+            return matchFound[1].toJSON()
   
 # Login Users
 login_parser = reqparse.RequestParser(bundle_errors=True)
