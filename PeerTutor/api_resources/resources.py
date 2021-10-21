@@ -5,6 +5,8 @@ from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_c
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.algorithims.pickleTools import dump
 from flask_login import login_user, current_user, logout_user, login_required
+from flask import jsonify
+import json
 
 #Registering a user
 register_parser = reqparse.RequestParser(bundle_errors=True)
@@ -45,13 +47,20 @@ class RegisterUser(Resource):
 
         try:  
             db.session.commit()
-            return {
-                "message" : "success"
-            }, 201
         except:
-            return {
-                "message" : "error (user probably already exists)"
-            }, 400
+            response = {
+                "message" : "error (user probably already exists)",
+                "user" : None
+            }
+            return response, 400
+        try:
+            return user.toJSON()
+        except:
+            response = {
+                "message" : "could not return user, but user created",
+                "user" : None
+            }
+            return response, 201
 
 #Finding info on user
 class UserInfo(Resource):

@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     schedule = db.relationship('Schedule', backref='user', lazy=True)
     requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
-    def toJSON(self):
+    def toJSON(self, message="success"):
         return jsonify(
             {
                 "id": self.id,
@@ -35,7 +35,8 @@ class User(db.Model, UserMixin):
                 "joinDate" : self.date_joined,
                 "permission" : self.permission,
                 "frees" : extract(self.schedule[0].frees),
-                "teachableGrades" : self.gradeLevels
+                "teachableGrades" : self.gradeLevels,
+                "message" : message
             }
         )
 
