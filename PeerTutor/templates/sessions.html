@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Sessions {% endblock title %}
+
+{% block content %}
+    <h2> Courses you are teaching: </h2>
+    {% for match in teacherMatches %}
+        <div class="match-container">
+            <p> Period: {{ match.period }} </p>
+            <p> User: {{ User.query.get(match.tutee_id).first().username }} </p>
+            <p> Course: {{ Course.query.get(match.course_id.first().name) }} </p>
+        </div>
+    {% endfor %}
+
+    <hr>
+
+    <h2> Courses you are learning: </h2>
+    {% for match in studentMatches %}
+        <div class="match-container">
+            <p> Period: {{ match.period }} </p>
+            <p> User: {{ User.query.get(match.tutee_id).first().username }} </p>
+            <p> Course: {{ Course.query.get(match.course_id.first().name) }} </p>
+        </div>
+    {% endfor %}
+{% endblock %}

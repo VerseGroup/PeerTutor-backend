@@ -33,9 +33,11 @@ def makeRequest():
         db.session.commit()
         flash('Sent Request!', 'success')
         return redirect(url_for('tutor_functions.requests'))
-    return render_template('/request.html', form=form)
+    return render_template('request.html', form=form)
 
 @login_required
 @tutor_functions.route('/sessions', methods=['GET'])
 def sessions():
-    pass
+    teacherMatches = Match.query.filter_by(tutor_id=current_user.id).all()
+    studentMatches = Match.query.filter_by(tutee_id=current_user.id).all()
+    return render_template('session.html', teacherMatches=teacherMatches, studentMatches=studentMatches)
