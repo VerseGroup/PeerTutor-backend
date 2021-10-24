@@ -5,10 +5,10 @@ from flask_login import current_user
 from PeerTutor.models import User
 from PeerTutor.tutoring.utils import getCourses
 
-COURSE_CHOICES = getCourses() #Generate list of choices
+COURSE_CHOICES = [1, "Spanish"] #getCourses() #Generate list of choices 
 
-def updateCourseChoices():
-    COURSE_CHOICES = getCourses()
+#def updateCourseChoices():
+#    COURSE_CHOICES = getCourses()
 
 TEACHING_CHOICES = [('1', 'Teach'), ('2', 'Learn')]
 
