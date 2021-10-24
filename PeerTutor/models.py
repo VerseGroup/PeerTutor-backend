@@ -27,6 +27,11 @@ class User(db.Model, UserMixin):
     requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
     def toJSON(self, message="success"):
+        # parsing string array to int array
+        grade_string_array = stringToArray(self.gradeLevels)
+        for element in grade_string_array:
+            element = int(element)
+
         return {
             "id": self.id,
             "username" : self.username,
@@ -35,7 +40,7 @@ class User(db.Model, UserMixin):
             "joinDate" : self.date_joined,
             "permission" : self.permission,
             "frees" : extract(self.schedule[0].frees),
-            "teachableGrades" : stringToArray(self.gradeLevels),
+            "teachableGrades" : grade_string_array,
             "message" : message
         }
 
