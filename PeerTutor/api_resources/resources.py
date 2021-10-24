@@ -123,7 +123,6 @@ class FindCourseRequestsByTutor(Resource):
         json_requests = list_of_requests_to_JSON(requests)
         return jsonify(json_requests)
 
-
 #Requesting courses
 request_parser = reqparse.RequestParser(bundle_errors=True)
 
@@ -176,7 +175,7 @@ class RequestCourse(Resource):
             return {
                 "message" : "success",
                 "match_found" : True,
-                "match" : matchFound[1].toJSON()
+                # "match" : matchFound[1].toJSON()
             }
   
 # Login Users
