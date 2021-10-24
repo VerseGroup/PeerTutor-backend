@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import app, jsonify
 from PeerTutor.algorithims.pickleTools import extract
+from PeerTutor.algorithims.conversions import stringToArray
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -35,7 +36,7 @@ class User(db.Model, UserMixin):
                 "joinDate" : self.date_joined,
                 "permission" : self.permission,
                 "frees" : extract(self.schedule[0].frees),
-                "teachableGrades" : self.gradeLevels,
+                "teachableGrades" : stringToArray(self.gradeLevels),
                 "message" : message
             }
         )
