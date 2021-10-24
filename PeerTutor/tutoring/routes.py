@@ -4,7 +4,7 @@ from PeerTutor import db
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.models import User, Match, CourseRequest, Course, Schedule
 from flask_login import current_user, login_required
-from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES #, updateCourseChoices
+from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES, updateCourseChoices
 from PeerTutor.tutoring.utils import queryUser, queryCourse
 
 tutor_functions = Blueprint('tutor_functions', __name__)
@@ -23,7 +23,7 @@ def makeRequest():
 
         course_id = form.course.data
         relationship = dict(TEACHING_CHOICES).get(form.relationship.data)
-        if relationship == "TEACH":
+        if relationship == "Teach":
             relationship = True
         else:
             relationship = False
