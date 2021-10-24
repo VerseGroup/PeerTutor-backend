@@ -14,11 +14,11 @@ def abort_if_no_matches(matches, id):
     if len(matches) == 0:
         abort(404, message= f"No matches found for user '{id}'")
 
-def list_of_matches_to_JSON(matches):
+def list_of_matches_to_JSON(matches, type):
     match_array = []
     for match in matches:
         match_array.append(match.toJSON())
-    json_matches = {"matches: " : match_array}
+    json_matches = {type : match_array}
     return json_matches
 
 def abort_if_no_requests(requests, id):

@@ -93,7 +93,7 @@ class FindMatchByTutor(Resource):
         abort_if_user_doesnt_exist(tutor_id)
         matches = Match.query.filter_by(tutor_id=tutor_id).all()
         abort_if_no_matches(matches=matches, id=tutor_id)
-        json_matches = list_of_matches_to_JSON(matches)
+        json_matches = list_of_matches_to_JSON(matches, "matches")
         return jsonify(json_matches)
 
 #Finding info on match with tutee id
@@ -102,7 +102,7 @@ class FindMatchByTutee(Resource):
         abort_if_user_doesnt_exist(tutee_id)
         matches = Match.query.filter_by(tutee_id=tutee_id).all()
         abort_if_no_matches(matches=matches, id=tutee_id)
-        json_matches = list_of_matches_to_JSON(matches)
+        json_matches = list_of_matches_to_JSON(matches, "matches")
         return jsonify(json_matches)
 
 #Finding course requests with a tutor id
@@ -111,7 +111,7 @@ class FindCourseRequestsByTutee(Resource):
         abort_if_user_doesnt_exist(id)
         requests = CourseRequest.query.filter_by(user_id=id, relationship=True).all()
         abort_if_no_requests(requests=requests, id=id)
-        json_requests = list_of_requests_to_JSON(requests)
+        json_requests = list_of_requests_to_JSON(requests, "requests")
         return jsonify(json_requests)
 
 #Find course requests with a tutee id
@@ -120,7 +120,7 @@ class FindCourseRequestsByTutor(Resource):
         abort_if_user_doesnt_exist(id)
         requests = CourseRequest.query.filter_by(user_id=id, relationship=False).all()
         abort_if_no_requests(requests=requests, id=id)
-        json_requests = list_of_requests_to_JSON(requests)
+        json_requests = list_of_requests_to_JSON(requests, "requests")
         return jsonify(json_requests)
 
 #Requesting courses
