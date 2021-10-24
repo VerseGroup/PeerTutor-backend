@@ -42,13 +42,14 @@ api.add_resource(LoginUser, '/api/login')
 api.add_resource(CurrentUserInfo, '/api/user')
 api.add_resource(LogoutUser, '/api/logout')
 
-from PeerTutor.api_resources.resources import UserInfo, CourseInfo, FindMatchByTutor, FindMatchByTutee, FindCourseRequestsById, GetCourses
+from PeerTutor.api_resources.resources import UserInfo, CourseInfo, FindMatchByTutor, FindMatchByTutee, FindCourseRequestsByTutor, FindCourseRequestsByTutee, GetCourses
 api.add_resource(UserInfo, '/api/user/<int:user_id>')
 api.add_resource(CourseInfo, '/api/course/<int:course_id>')
 api.add_resource(GetCourses, '/api/courses')
 api.add_resource(FindMatchByTutor, '/api/findmatchbytutor/<int:tutor_id>')
 api.add_resource(FindMatchByTutee, '/api/findmatchbytutee/<int:tutee_id>')
-api.add_resource(FindCourseRequestsById, '/api/findmatchrequestbyid/<int:id>')
+api.add_resource(FindCourseRequestsByTutor, '/api/findmatchrequestbytutor/<int:id>')
+api.add_resource(FindCourseRequestsByTutee, '/api/findmatchrequestbytutee/<int:id>')
 
 from PeerTutor.api_resources.resources import RequestCourse
 api.add_resource(RequestCourse, '/api/request')

@@ -105,14 +105,24 @@ class FindMatchByTutee(Resource):
         json_matches = list_of_matches_to_JSON(matches)
         return jsonify(json_matches)
 
-#Finding course requests with an id
-class FindCourseRequestsById(Resource):
+#Finding course requests with a tutor id
+class FindCourseRequestsByTutee(Resource):
     def get(self, id):
         abort_if_user_doesnt_exist(id)
-        requests = CourseRequest.query.filter_by(user_id=id).all()
+        requests = CourseRequest.query.filter_by(user_id=id, relationship=True).all()
         abort_if_no_requests(requests=requests, id=id)
         json_requests = list_of_requests_to_JSON(requests)
         return jsonify(json_requests)
+
+#Find course requests with a tutee id
+class FindCourseRequestsByTutor(Resource):
+    def get(self, id):
+        abort_if_user_doesnt_exist(id)
+        requests = CourseRequest.query.filter_by(user_id=id, relationship=False).all()
+        abort_if_no_requests(requests=requests, id=id)
+        json_requests = list_of_requests_to_JSON(requests)
+        return jsonify(json_requests)
+
 
 #Requesting courses
 request_parser = reqparse.RequestParser(bundle_errors=True)
