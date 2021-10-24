@@ -31,7 +31,7 @@ class RegisterUser(Resource):
         password = args['password']
         grade = args['grade']
         frees= args['frees']
-        grades= args['grades']
+        grades= args['teachableGrades']
 
         #hashing pw
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
