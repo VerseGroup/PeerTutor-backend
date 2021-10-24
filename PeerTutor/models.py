@@ -91,8 +91,8 @@ class CourseRequest(db.Model):
     def toJSON(self, message="success"):
         return {
             "id": self.id,
-            "user_id": self.user_id,
-            "course_id": self.course_id,
+            "user": User.query.get(self.user_id).toJSON(),
+            "course": Course.query.get(self.course_id).toJSON(),
             "relationship": self.relationship,
             "message" : message
         }

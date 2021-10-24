@@ -147,7 +147,10 @@ class RequestCourse(Resource):
         #Where matchFound[0] is match or no, and matchFound[1] is match id if applicable
         
         if matchFound[0] == False:
-            return request.toJSON(message="Success. No match found.")
+            return {
+                "message": "success",
+                "match_found" : False
+            }
         else:
             return matchFound[1].toJSON()
   
@@ -172,9 +175,10 @@ class LoginUser(Resource):
         user = User.query.filter_by(username=username).first()
         
         if user and bcrypt.check_password_hash(user.password, password):
-            login_user(user)
+            #login_user(user)
             return {
-                "logged_in" : True
+                "logged_in" : True,
+                "user" : user.toJSON()
             }
         else:
             return {
