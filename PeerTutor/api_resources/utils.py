@@ -25,11 +25,11 @@ def abort_if_no_requests(requests, id):
     if len(requests) == 0:
         abort(404, message= f"No requests found for user '{id}'")
 
-def list_of_requests_to_JSON(requests):
+def list_of_requests_to_JSON(requests, type):
     request_array = []
     for request in requests:
         request_array.append(request.toJSON())
-    json_requests = {"requests" : request_array}
+    json_requests = {type : request_array}
     return json_requests
 
 def all_courses_to_JSON(courses):
