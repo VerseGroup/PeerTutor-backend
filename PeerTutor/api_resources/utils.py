@@ -32,3 +32,10 @@ def list_of_requests_to_JSON(requests):
     json_requests = {"requests" : request_array}
     return json_requests
 
+def all_courses_to_JSON(courses):
+    course_array = []
+    for course in courses:
+        course_array.append(course.toJSON())
+    json_courses = {"courses: " : course_array}
+    return json_courses
+

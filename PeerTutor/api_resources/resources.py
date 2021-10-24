@@ -1,7 +1,7 @@
 from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse
 from PeerTutor.models import User, CourseRequest, Course, Match, Schedule
-from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON
+from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON, all_courses_to_JSON
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.algorithims.pickleTools import dump
 from flask_login import login_user, current_user, logout_user, login_required
@@ -75,6 +75,14 @@ class CourseInfo(Resource):
         abort_if_course_doesnt_exist(course_id)
         course = Course.query.get(course_id)
         return jsonify(course.toJSON())
+
+#Returns every possible course
+class GetCourses(Resource):
+    def get(self):
+        courses = Course.query.all()
+        courses_array = all_courses_to_JSON(courses)
+        return jsonify({"courses" : courses_array})
+
 
 #Finding info on match with tutor id
 class FindMatchByTutor(Resource):
