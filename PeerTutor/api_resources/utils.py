@@ -18,8 +18,7 @@ def list_of_matches_to_JSON(matches):
     match_array = []
     for match in matches:
         match_array.append(match.toJSON())
-    print(match_array)
-    json_matches = jsonify({"matches: " : match_array})
+    json_matches = {"matches: " : match_array}
     return json_matches
 
 def abort_if_no_requests(requests, id):
@@ -30,6 +29,6 @@ def list_of_requests_to_JSON(requests):
     request_array = []
     for request in requests:
         request_array.append(request.toJSON())
-    json_requests = jsonify({"requests" : request_array})
+    json_requests = {"requests" : request_array}
     return json_requests
 

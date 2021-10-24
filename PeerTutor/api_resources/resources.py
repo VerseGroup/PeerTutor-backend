@@ -83,7 +83,7 @@ class FindMatchByTutor(Resource):
         matches = Match.query.filter_by(tutor_id=tutor_id).all()
         abort_if_no_matches(matches=matches, id=tutor_id)
         json_matches = list_of_matches_to_JSON(matches)
-        return json_matches
+        return jsonify(json_matches)
 
 #Finding info on match with tutee id
 class FindMatchByTutee(Resource):
@@ -92,7 +92,7 @@ class FindMatchByTutee(Resource):
         matches = Match.query.filter_by(tutee_id=tutee_id).all()
         abort_if_no_matches(matches=matches, id=tutee_id)
         json_matches = list_of_matches_to_JSON(matches)
-        return json_matches
+        return jsonify(json_matches)
 
 #Finding course requests with an id
 class FindCourseRequestsById(Resource):
@@ -101,7 +101,7 @@ class FindCourseRequestsById(Resource):
         requests = CourseRequest.query.filter_by(user_id=id).all()
         abort_if_no_requests(requests=requests, id=id)
         json_requests = list_of_requests_to_JSON(requests)
-        return json_requests
+        return jsonify(json_requests)
 
 #Requesting courses
 request_parser = reqparse.RequestParser(bundle_errors=True)
