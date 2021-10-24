@@ -112,9 +112,9 @@ class Match(db.Model):
     def toJSON(self, message="success"):
         return {
             "id": self.id,
-            "tutor_id": self.tutor_id,
-            "tutee_id": self.tutee_id,
-            "course_id": self.course_id,
+            "tutor": User.query.get(self.tutor_id).toJSON(),
+            "tutee": User.query.get(self.tutee_id).toJSON(),
+            "course" : Course.query.get(self.course_id).toJSON(),
             "period": self.period,
             "message" : message
         }
