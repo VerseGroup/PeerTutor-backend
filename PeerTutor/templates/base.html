@@ -22,7 +22,7 @@
           {% if current_user.is_authenticated %}
             <a class="link right-link" href=" {{ url_for('users.logout') }}">Logout</a>
             <a class="link right-link" href=" {{ url_for('users.account') }}">Account</a>
-            <a class="link right-link" href=" {{ url_for('main.home') }}">Sessions</a>
+            <a class="link right-link" href=" {{ url_for('tutor_functions.sessions') }}">Sessions</a>
             <a class="link right-link" href=" {{ url_for('tutor_functions.requests') }}">Requests</a>
           {% else %}
             <a class="link right-link" href=" {{ url_for('users.login') }}">Login</a>
