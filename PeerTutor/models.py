@@ -27,19 +27,17 @@ class User(db.Model, UserMixin):
     requests = db.relationship('CourseRequest', backref='user', lazy=True)
 
     def toJSON(self, message="success"):
-        return jsonify(
-            {
-                "id": self.id,
-                "username" : self.username,
-                "email": self.email,
-                "grade" : self.grade,
-                "joinDate" : self.date_joined,
-                "permission" : self.permission,
-                "frees" : extract(self.schedule[0].frees),
-                "teachableGrades" : stringToArray(self.gradeLevels),
-                "message" : message
-            }
-        )
+        return {
+            "id": self.id,
+            "username" : self.username,
+            "email": self.email,
+            "grade" : self.grade,
+            "joinDate" : self.date_joined,
+            "permission" : self.permission,
+            "frees" : extract(self.schedule[0].frees),
+            "teachableGrades" : stringToArray(self.gradeLevels),
+            "message" : message
+        }
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
@@ -73,13 +71,11 @@ class Course(db.Model):
     description = db.Column(db.Text, nullable=False)
 
     def toJSON(self):
-        return jsonify(
-            {
-                "id": self.id,
-                "name" : self.name,
-                "description" : self.description
-            }
-        )
+        return {
+            "id": self.id,
+            "name" : self.name,
+            "description" : self.description
+        }
     
     def __repr__(self):
         return f"{self.name}"

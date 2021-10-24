@@ -67,14 +67,14 @@ class UserInfo(Resource):
     def get(self, user_id):
         abort_if_user_doesnt_exist(user_id)
         user = User.query.get(user_id)
-        return user.toJSON()
+        return jsonify(user.toJSON())
 
 #Finding info on course
 class CourseInfo(Resource):
     def get(self, course_id):    
         abort_if_course_doesnt_exist(course_id)
         course = Course.query.get(course_id)
-        return course.toJSON()
+        return jsonify(course.toJSON())
 
 #Finding info on match with tutor id
 class FindMatchByTutor(Resource):
