@@ -1,4 +1,4 @@
-from PeerTutor.models import Course
+from PeerTutor.models import Course, User
 
 def getCourses():
     course_array = []
@@ -9,4 +9,8 @@ def getCourses():
         count += 1
     return course_array
 
+def queryUser(id):
+    return User.query.get(id)
 
+def queryCourse(id):
+    return Course.query.get(id)

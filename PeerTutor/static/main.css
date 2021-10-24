@@ -97,3 +97,13 @@ tr:hover {
 .content{
     margin: 10px;
 }
+
+/* Sessions.html */
+.match-container{
+    border: 1px solid black;
+    padding: 5px;
+    width: 10%;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
