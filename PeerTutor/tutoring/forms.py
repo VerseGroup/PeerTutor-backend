@@ -6,6 +6,10 @@ from PeerTutor.models import User
 from PeerTutor.tutoring.utils import getCourses
 
 COURSE_CHOICES = getCourses() #Generate list of choices
+
+def updateCourseChoices():
+    COURSE_CHOICES = getCourses()
+
 TEACHING_CHOICES = [('1', 'Teach'), ('2', 'Learn')]
 
 class RequestMatch(FlaskForm):
