@@ -36,11 +36,9 @@ from PeerTutor.tutoring.routes import tutor_functions
 app.register_blueprint(tutor_functions)
 
 #Registering API (use 'curl url' to test)
-from PeerTutor.api_resources.resources import RegisterUser, LoginUser, LogoutUser, CurrentUserInfo
+from PeerTutor.api_resources.resources import RegisterUser, LoginUser
 api.add_resource(RegisterUser, '/api/register')
 api.add_resource(LoginUser, '/api/login')
-api.add_resource(CurrentUserInfo, '/api/user')
-api.add_resource(LogoutUser, '/api/logout')
 
 from PeerTutor.api_resources.resources import UserInfo, CourseInfo, FindMatchByTutor, FindMatchByTutee, FindCourseRequestsByTutor, FindCourseRequestsByTutee, GetCourses
 api.add_resource(UserInfo, '/api/user/<int:user_id>')
