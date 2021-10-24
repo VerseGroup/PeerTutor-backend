@@ -198,7 +198,8 @@
     <hr>
     <p>
         Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
-            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2d3p5d5p6" -X POST -v
+            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2,d3p5,d5p6" -d 
+            "grades=8,7,6,4,6" -X POST -v
     </p>
     </p>
     <small> Parameters: 
@@ -211,7 +212,9 @@
         <br>
         password (String)
         <br>
-        frees (Undelimited String)
+        frees (String delimited by comma)
+        <br>
+        grades (String delimited by comma)
     </small>
     <h5> Example return JSON: </h4>
     <p>
@@ -307,7 +310,7 @@
     <h5> Example return JSON: </h4>
     <p>
         {
-            "logged-in" : True,
+            "logged_in" : True,
             "user": {
                 "email": "example2@gmail.com", 
                 "frees": [
