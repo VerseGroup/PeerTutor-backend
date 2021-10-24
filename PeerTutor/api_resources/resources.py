@@ -163,7 +163,11 @@ class RequestCourse(Resource):
                 "match_found" : False
             }
         else:
-            return matchFound[1].toJSON()
+            return {
+                "message" : "success",
+                "match_found" : True,
+                "match" : matchFound[1].toJSON()
+            }
   
 # Login Users
 login_parser = reqparse.RequestParser(bundle_errors=True)
