@@ -20,6 +20,7 @@
                 <td> {{ user.email }} </td>
                 <td> {{ user.permission }} </td>
                 <td> {{ get_user_requests(user) }} </td>
+                <td> {{ user.teachableGrades }}</td>
             </tr>
         {% endfor %}
     </table>
