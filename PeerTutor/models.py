@@ -29,8 +29,9 @@ class User(db.Model, UserMixin):
     def toJSON(self, message="success"):
         # parsing string array to int array
         grade_string_array = stringToArray(self.gradeLevels)
+        grade_int_array = []
         for element in grade_string_array:
-            element = int(element)
+            grade_int_array.append(int(element))
 
         return {
             "id": self.id,
@@ -40,7 +41,7 @@ class User(db.Model, UserMixin):
             "joinDate" : self.date_joined,
             "permission" : self.permission,
             "frees" : extract(self.schedule[0].frees),
-            "teachableGrades" : grade_string_array,
+            "teachableGrades" : grade_int_array,
             "message" : message
         }
 
