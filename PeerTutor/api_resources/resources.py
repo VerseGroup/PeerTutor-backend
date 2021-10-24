@@ -54,10 +54,10 @@ class RegisterUser(Resource):
             }
             return response, 400
         try:
-            return {
+            return jsonify({
                 "message" : "success",
                 "user" : user.toJSON()
-            }
+            })
         except:
             response = {
                 "message" : "could not return user, but user created",
