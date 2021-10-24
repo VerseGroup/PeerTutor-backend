@@ -11,7 +11,7 @@ def abort_if_course_doesnt_exist(course_id):
         abort(404, message= f"Course '{course_id}' doesn't exist") 
 
 def abort_if_no_matches(matches, id):
-    if matches[0] is None:
+    if len(matches) > 0:
         abort(404, message= f"No matches found for user '{id}'")
 
 def list_of_matches_to_JSON(matches):

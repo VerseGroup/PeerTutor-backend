@@ -8,13 +8,13 @@ from PeerTutor.admin.utils import extract, get_user_requests
 
 admin = Blueprint('admin', __name__)
 
-@login_required
+#@login_required
 @admin.route("/admin")
 def adminPage():
-    if current_user.permission < 4:
-        flash('You don\'t have permission to do that!', 'alert')
-        return redirect(url_for('main.home'))
-    else:
+    #if current_user.permission < 4:
+    #    flash('You don\'t have permission to do that!', 'alert')
+    #    return redirect(url_for('main.home'))
+    #else:
         users = User.query.order_by(User.date_joined.desc()).all()
         courses = Course.query.order_by(Course.id.desc()).all()
         requests = CourseRequest.query.order_by(CourseRequest.id.desc()).all()
