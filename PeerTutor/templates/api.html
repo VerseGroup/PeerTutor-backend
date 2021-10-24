@@ -203,7 +203,7 @@
     <p>
         Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
             -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2,d3p5,d5p6" -d 
-            "grades=8,7,6,4,6" -X POST -v
+            "teachableGrades=8,7,6,4,6" -X POST -v
     </p>
     </p>
     <small> Parameters: 
@@ -218,7 +218,7 @@
         <br>
         frees (String delimited by comma)
         <br>
-        grades (String delimited by comma)
+        teachableGrades (String delimited by comma)
     </small>
     <h5> Example return JSON: </h4>
     <p>
