@@ -54,7 +54,10 @@ class RegisterUser(Resource):
             }
             return response, 400
         try:
-            return user.toJSON()
+            return {
+                "message" : "success",
+                "user" : user.toJSON()
+            }
         except:
             response = {
                 "message" : "could not return user, but user created",
