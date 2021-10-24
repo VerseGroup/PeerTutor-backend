@@ -30,7 +30,7 @@
             "id": 2, 
             "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
             "permission": 1, 
-            "teachableGrades": "8,9,10,11,12", 
+            "teachableGrades": [8,9,10,11,12], 
             "username": "example2"
         }
     </p>
@@ -51,6 +51,27 @@
 
     <hr>
     <p>
+        Find all courses (GET) @ /api/courses
+    </p>
+    <small> No Parameters (GET) </small>
+    <h5> Example return JSON: </h4>
+    <p>
+        { courses: [
+        {
+            "description": "Calc", 
+            "id": 1, 
+            "name": "Math"
+        },
+        {
+            "description": "The Passion", 
+            "id": 2, 
+            "name": "English"
+        }
+        ] }
+    </p>
+
+    <hr>
+    <p>
         Find matches by tutee id (GET) @ /api/findmatchbytutee/# 
     </p>
     </p>
@@ -60,11 +81,37 @@
         {
             "matches: ": [
               {
-                "course_id": 1, 
+                "course": {
+                    "description": "The Passion", 
+                    "id": 2, 
+                    "name": "English"
+                }, 
                 "id": 1, 
                 "period": "d1p6", 
-                "tutee_id": 2, 
-                "tutor_id": 1
+                "tutee": {
+                    "email": "example2@gmail.com", 
+                    "frees": [
+                    "d1p6"
+                    ], 
+                    "grade": 11, 
+                    "id": 2, 
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                    "permission": 1, 
+                    "teachableGrades": [8,9,10,11,12], 
+                    "username": "example2"
+                }, 
+                "tutor": {
+                    "email": "example3@gmail.com", 
+                    "frees": [
+                    "d1p6"
+                    ], 
+                    "grade": 11, 
+                    "id": 3, 
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                    "permission": 1, 
+                    "teachableGrades": [8,9,10,11,12], 
+                    "username": "example1"
+                }
               }
             ]
         }
@@ -81,11 +128,37 @@
         {
             "matches: ": [
               {
-                "course_id": 1, 
+                "course": {
+                    "description": "The Passion", 
+                    "id": 2, 
+                    "name": "English"
+                }, 
                 "id": 1, 
                 "period": "d1p6", 
-                "tutee_id": 2, 
-                "tutor_id": 1
+                "tutee": {
+                    "email": "example2@gmail.com", 
+                    "frees": [
+                    "d1p6"
+                    ], 
+                    "grade": 11, 
+                    "id": 2, 
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                    "permission": 1, 
+                    "teachableGrades": [8,9,10,11,12], 
+                    "username": "example2"
+                }, 
+                "tutor": {
+                    "email": "example3@gmail.com", 
+                    "frees": [
+                    "d1p6"
+                    ], 
+                    "grade": 11, 
+                    "id": 3, 
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                    "permission": 1, 
+                    "teachableGrades": [8,9,10,11,12], 
+                    "username": "example1"
+                }
               }
             ]
         }
@@ -101,8 +174,23 @@
     <p>
         {
             "id": 2,
-            "user_id": 1,
-            "course_id": 1,
+            "user": {
+                "email": "example2@gmail.com", 
+                "frees": [
+                "d1p6"
+                ], 
+                "grade": 11, 
+                "id": 2, 
+                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                "permission": 1, 
+                "teachableGrades": [8,9,10,11,12], 
+                "username": "example2"
+            }, 
+            "course": {
+                "description": "The Passion", 
+                "id": 2, 
+                "name": "English"
+            }, 
             "relationship": True
         }
     </p>
@@ -174,7 +262,19 @@
     <h5> Example return JSON: </h4>
     <p>
         {
-            "logged-in" : True
+            "logged-in" : True,
+            "user": {
+                "email": "example2@gmail.com", 
+                "frees": [
+                "d1p6"
+                ], 
+                "grade": 11, 
+                "id": 2, 
+                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
+                "permission": 1, 
+                "teachableGrades": [8,9,10,11,12], 
+                "username": "example2"
+            }
         }
     </p>
 
