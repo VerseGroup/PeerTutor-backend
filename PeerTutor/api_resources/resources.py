@@ -200,10 +200,10 @@ class LoginUser(Resource):
         
         if user and bcrypt.check_password_hash(user.password, password):
             #login_user(user)
-            return {
+            return jsonify( {
                 "logged_in" : True,
                 "user" : user.toJSON()
-            }
+            } )
         else:
             return {
                 "logged_in" : False
