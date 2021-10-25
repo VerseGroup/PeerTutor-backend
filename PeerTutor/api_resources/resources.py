@@ -109,7 +109,7 @@ class FindMatchByTutee(Resource):
 class FindCourseRequestsByTutee(Resource):
     def get(self, id):
         abort_if_user_doesnt_exist(id)
-        requests = CourseRequest.query.filter_by(user_id=id, relationship=True).all()
+        requests = CourseRequest.query.filter_by(user_id=id, relationship=False).all()
         abort_if_no_requests(requests=requests, id=id)
         json_requests = list_of_requests_to_JSON(requests, "requests")
         return jsonify(json_requests)
@@ -118,7 +118,7 @@ class FindCourseRequestsByTutee(Resource):
 class FindCourseRequestsByTutor(Resource):
     def get(self, id):
         abort_if_user_doesnt_exist(id)
-        requests = CourseRequest.query.filter_by(user_id=id, relationship=False).all()
+        requests = CourseRequest.query.filter_by(user_id=id, relationship=True).all()
         abort_if_no_requests(requests=requests, id=id)
         json_requests = list_of_requests_to_JSON(requests, "requests")
         return jsonify(json_requests)
