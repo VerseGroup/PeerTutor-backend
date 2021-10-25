@@ -3,12 +3,9 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Selec
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
 from PeerTutor.models import User
-#from PeerTutor.tutoring.utils import getCourses
+from PeerTutor.tutoring.utils import getCourses
 
-COURSE_CHOICES = [1, 'Spanish'] #getCourses() #Generate list of choices 
-
-#def updateCourseChoices():
-#    COURSE_CHOICES = getCourses()
+COURSE_CHOICES = [] #getCourses() #Generate list of choices 
 
 TEACHING_CHOICES = [('1', 'Teach'), ('2', 'Learn')]
 

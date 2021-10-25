@@ -4,7 +4,7 @@ from PeerTutor import db
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.models import User, Match, CourseRequest, Course, Schedule
 from flask_login import current_user, login_required
-from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES #, updateCourseChoices
+from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES
 from PeerTutor.tutoring.utils import queryUser, queryCourse
 
 tutor_functions = Blueprint('tutor_functions', __name__)
@@ -17,7 +17,6 @@ def requests():
 @login_required
 @tutor_functions.route('/request', methods=['GET', 'POST'])
 def makeRequest():
-    #updateCourseChoices()
     form = RequestMatch()
     if form.validate_on_submit():
 
