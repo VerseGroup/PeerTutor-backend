@@ -16,5 +16,5 @@ def get_user_requests(user):
             teachOrLearn = "Teach"
         else:
             teachOrLearn = "Learn"
-        array_requests.append(str(request.id) + ":" + Course.query.get(request.id).name + ":" + teachOrLearn)
+        array_requests.append(str(request.id) + ":" + Course.query.get(request.course_id).name + ":" + teachOrLearn)
     return array_requests

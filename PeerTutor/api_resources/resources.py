@@ -129,7 +129,7 @@ request_parser = reqparse.RequestParser(bundle_errors=True)
 class RequestCourse(Resource):
     request_parser.add_argument('user_id', type=int, required=True, help='Need username id in form of int')
     request_parser.add_argument('course_id', type=int, required=True, help='Need course id in form of int')
-    request_parser.add_argument('relationship', type=bool, required=True, help='Teach as true, learn as false') 
+    request_parser.add_argument('relationship', required=True, help='Teach as true, learn as false') 
 
     def get(self):
         return {"message" : "Get method not supported, try 'Post' or 'Put' instead in terminal using 'curl"}, 400
@@ -139,7 +139,12 @@ class RequestCourse(Resource):
         args = request_parser.parse_args()
         user_id = args['user_id']
         course_id = args['course_id']
-        relationship = args['relationship']
+        teachOrLearn = args['relationship']
+        
+        if teachOrLearn == "True" or teachOrLearn == "true":
+            teachOrLearn = True
+        else:
+            teachOrLearn = False
 
         #checking courses and users exists
         if User.query.get(user_id) is None or Course.query.get(course_id) is None:
@@ -152,7 +157,7 @@ class RequestCourse(Resource):
         user = User.query.get(user_id)
         course = Course.query.get(course_id)
 
-        request = CourseRequest(user=user, course_id=course.id, relationship=relationship)
+        request = CourseRequest(user=user, course_id=course.id, relationship=teachOrLearn)
         db.session.add(request)
 
         try:  
