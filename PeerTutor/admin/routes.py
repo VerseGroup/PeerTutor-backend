@@ -46,3 +46,7 @@ def addUser():
         flash('Your user has been created', 'alert')
         return redirect(url_for('admin.adminPage'))
     return render_template('create_user.html', form=form, redirect="admin.adminPage")
+
+@admin.route('/kanye')
+def kanye():
+    return render_template('kanye.html')
