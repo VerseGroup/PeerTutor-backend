@@ -1,0 +1,5 @@
+Notes on how to crop Images
+
+Dimensions of perfectly cropped image are 1906 × 1336:
+
+Center is at (953, 668)
