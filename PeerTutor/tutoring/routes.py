@@ -1,18 +1,21 @@
 from flask import render_template, request, Blueprint, redirect, url_for, flash
 from flask_login.utils import login_required
+from werkzeug.local import release_local
 from PeerTutor import db
 from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.models import User, Match, CourseRequest, Course, Schedule
 from flask_login import current_user, login_required
 from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES
-from PeerTutor.tutoring.utils import queryUser, queryCourse
+from PeerTutor.tutoring.utils import queryUser, queryCourse, queryCourseRequests
 
 tutor_functions = Blueprint('tutor_functions', __name__)
 
 @login_required
 @tutor_functions.route('/requests', methods=['GET'])
 def requests():
-    return render_template('requests.html')
+    teachRequests = queryCourseRequests(user=current_user, relationship=True)
+    learnRequests = queryCourseRequests(user=current_user, relationship=False)
+    return render_template('requests.html', queryCourse=queryCourse, teachRequests=teachRequests, learnRequests=learnRequests)
     
 @login_required
 @tutor_functions.route('/request', methods=['GET', 'POST'])

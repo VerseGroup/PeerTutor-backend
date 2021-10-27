@@ -3,5 +3,35 @@
 {% block title %} Requests {% endblock title %}
 
 {% block content %}
+    <h1> Courses you want to learn: </h1>
+    <table class="request-table">
+        <tr>
+            <th>Course</th>
+            <th>Course ID</th>
+        </tr>
+        {% for request in learnRequests %}
+        <tr>
+            <td>{{queryCourse(request.course_id).name}}</td>
+            <td>{{request.course_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1> Courses you want to teach: </h1>
+    <table class="request-table">
+        <tr>
+            <th>Course</th>
+            <th>Course ID</th>
+        </tr>
+        {% for request in teachRequests %}
+        <tr>
+            <td>{{queryCourse(request.course_id).name}}</td>
+            <td>{{request.course_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br> 
+    
     <a href="{{url_for('tutor_functions.makeRequest')}}"> Make New Request? </a>
 {% endblock %}

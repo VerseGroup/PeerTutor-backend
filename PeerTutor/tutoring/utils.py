@@ -1,4 +1,5 @@
-from PeerTutor.models import Course, User
+from sqlalchemy.orm import relation
+from PeerTutor.models import Course, User, CourseRequest
 
 def getCourses():
     course_array = []
@@ -15,3 +16,6 @@ def queryUser(id):
 
 def queryCourse(id):
     return Course.query.get(id)
+    
+def queryCourseRequests(user, relationship):
+    return CourseRequest.query.filter_by(user=user, relationship=relationship).all()

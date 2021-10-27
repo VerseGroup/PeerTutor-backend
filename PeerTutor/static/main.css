@@ -107,3 +107,11 @@ tr:hover {
     margin: 10px;
     text-align: center;
 }
+
+/* Requests */
+.request-table{
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
