@@ -33,6 +33,9 @@ def build_model(input_shape, classes):
 
 (X_train, y_train), (X_test, y_test) = datasets.mnist.load_data()
 
+print(len(X_train[0]))
+print(type(X_train))
+"""
 X_train = X_train.reshape((60000, 28, 28, 1))
 X_test = X_test.reshape((10000, 28, 28, 1))
 
@@ -56,3 +59,4 @@ history = model.fit(X_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verb
 score = model.evaluate(X_test, y_test, verbose=VERBOSE)
 print("\nTest Score;", score[0])
 print("\nTest accuracy;", score[1])
+"""
