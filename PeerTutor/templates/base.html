@@ -39,11 +39,10 @@
 
   <main role="main" class="content">
       <div class="#">
-      <div class="#">
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-              {% for catagory, message in messages %}
-                <div class="#">
+              {% for category, message in messages %}
+                <div class="{{category}}">
                   {{ message }}
                 </div>
               {% endfor %}

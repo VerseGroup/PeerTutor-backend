@@ -115,3 +115,21 @@ tr:hover {
     text-align: center;
     padding: 15px;
 }
+
+/* notification styles */
+.success{
+    width: inherit;
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    border: 0.5px solid darkgrey;
+    background-color: lightgreen;
+}
+.warning{
+    width: inherit;
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    border: 0.5px solid darkgrey;
+    background-color: #e33d3d;
+}

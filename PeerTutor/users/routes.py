@@ -19,7 +19,7 @@ def register():
         grade = int(form.grade.data))
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created!', 'successful-login')
+        flash('Your account has been created!', 'success')
         return redirect(url_for('users.login'))
 
     return render_template('/register.html', form=form)
@@ -33,15 +33,17 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
+            flash('Logged in Successfully!', 'success')
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('main.home'))
         else:
-            flash('Log in unsuccessful, please check email and password', 'danger')
+            flash('Log in unsuccessful, please check email and password', 'warning')
     return render_template('/login.html', form=form)
 
 @users.route("/logout")
 def logout():
     logout_user()
+    flash('Logged Out!', 'success')
     return redirect(url_for('main.home'))
 
 @users.route("/account", methods=['GET', 'POST'])
@@ -57,7 +59,7 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Your account has been updated!', 'alert')
+        flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
         form.username.data = current_user.username

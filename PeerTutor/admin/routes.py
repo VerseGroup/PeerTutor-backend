@@ -30,7 +30,7 @@ def addCourse():
         course = Course(name=form.name.data, description=form.description.data)
         db.session.add(course)
         db.session.commit()
-        flash('Your post has been created!', 'alert')
+        flash('Your post has been created!', 'success')
         return redirect(url_for('admin.adminPage'))
     return render_template('create_course.html', form=form, redirect="admin.adminPage")
 
@@ -43,7 +43,7 @@ def addUser():
         grade=form.grade.data, email=form.email.data)
         db.session.add(user)
         db.session.commit()
-        flash('Your user has been created', 'alert')
+        flash('Your user has been created', 'success')
         return redirect(url_for('admin.adminPage'))
     return render_template('create_user.html', form=form, redirect="admin.adminPage")
 
