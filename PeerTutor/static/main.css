@@ -1,5 +1,9 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
 body {
     margin: 0px;
+    font-family: 'Manrope', sans-serif;
 }
 
 /* Admin Table */
@@ -45,6 +49,7 @@ tr:hover {
     color:black;
     text-decoration: none;
     background-color: lightgrey;
+    margin-bottom:0px;
 }
 .link:hover{
     background-color: white;
@@ -61,14 +66,14 @@ tr:hover {
     width: 100%;
     padding-top: 0px;
     background-color: lightgrey;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin:0px;
+    padding-bottom:0px;
 }
 .logo{
     border-style: hidden;
     color: blue;
     margin-left: 0px;
+    margin-bottom:0px;
 }
 .logo:hover{
     background-color:inherit;
@@ -81,21 +86,22 @@ tr:hover {
 }
 .nav-bar-nav{
     width: 100%;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin: 0px;
+    padding-bottom:0px;
+
 }
 .nav-bar-div{
     margin: 0px;
+    padding-bottom:0px;
 }
 .admin-link{
-    color: red;
-    background-color:black
+    color: black;
+    background-color: #f09ebb;
 }
 
 /* General Content CSS */
-.content{
-    margin: 10px;
+.messages{
+    margin: 0px;
 }
 
 /* Sessions.html */
@@ -132,4 +138,65 @@ tr:hover {
     text-align: center;
     border: 0.5px solid darkgrey;
     background-color: #e33d3d;
+}
+
+/* home page */
+.home-title{
+    padding:0px;
+    margin:0px;
+    font-size: 200px;
+    text-align:center;
+}
+.home-title-div{
+    width:inherit;
+    padding:0px;
+    margin:0px;
+}
+.home-description-div{
+    width:inherit;
+    padding:0px;
+    margin:0px;
+}
+.home-description{
+    padding:0px;
+    margin:0px;
+    font-size: 50px;
+    text-align:center;
+}
+.home-authors-div{
+    width:inherit;
+    padding:0px;
+    margin:0px;
+    margin-top: 25px;
+    padding-bottom: 15px;
+    margin-bottom:0px;
+}
+.home-authors{
+    padding:0px;
+    margin:0px;
+    font-size: 12px;
+    text-align:center;
+}
+.home-howToUse{
+    width:inherit;
+    margin:0px;
+    padding:0px;
+    text-align: center;
+}
+.home-howToUse-title{
+    margin:0px;
+    font-size: 45px;
+}
+
+/* home page blocks */
+.home-intro-block{
+    margin:0px;
+    background-color:#ebb894;
+}
+.home-howToUse-block{
+    text-align: center;
+    margin:0px;
+    padding-top:25px;
+    padding-bottom:25px;
+    background-color:#C1E1C1; 
 }
