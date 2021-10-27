@@ -20,7 +20,8 @@ def makeRequest():
     form = RequestMatch()
     if form.validate_on_submit():
 
-        course_id = form.course.data
+        course_id = int(form.course.data)
+        print(course_id)
         relationship = dict(TEACHING_CHOICES).get(form.relationship.data)
         if relationship == "Teach":
             relationship = True
