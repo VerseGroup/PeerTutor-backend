@@ -46,4 +46,13 @@ devAccount.permission = 4
 
 db.session.commit()
 
+matchRequests(R2)
+#add premade courses
+from PeerTutor.add_courses import course_list
+addSomething(course_list)
+
+
+
+
+
 matchRequests(courseR2)
