@@ -42,7 +42,15 @@ course_name_and_disc = [("AP Calculus (AB/BC)", "Prepares for BC Exam),
                  ("History 9: Sources of Modernity", "This class covers Aztec/Spanish contact, Reformation, and Tokugawa power and isolationism."),
                  ("United States History, Colonization to 1900", "This class covers the history of the US from it's emergance to the turn of 20th century"),
                  ("The Twentieth Century World History", "This class covers past 20th ceturty American history."),
-                 ("Economics", "Prepares students for the AP micro exam")]
+                 ("Economics", "Prepares students for the AP micro exam"),
+                 ("Physics 9", "Physics without Calc"),
+                 ("Accelerated Chemistry", "Harder Chem 10"),
+                 ("Chemistry 10", "Normal Class chem"),
+                 ("Biology", "Teaches basic evolution and Biology material."),
+                 ("Cellular Biology", "Recomened for AP Bio"),
+                 ("AP Chemistry", "Prepares Students for the AP Chemistry Exam"),
+                 ("AP Physics", "Prepares students for the two AP physics exams"),
+                 ("AP Biology", "Prepares students for the AP Biology exam.")]
 
 course_list = []
 for (name, discription) in course_name_and_disc:
