@@ -19,9 +19,6 @@ user = User(username="example", email="example@gmail.com", password=hashed_passw
 user2 = User(username="example2", email="example2@gmail.com", password=hashed_password, grade=11)
 user3 = User(username="example3", email="example3@gmail.com", password=hashed_password, grade=11)
 user4 = User(username="dev", email="dev@tc.com", password=hashed_password, grade=11)
-course = Course(name="Math", description="Calc")
-course2 = Course(name="English", description="Essay")
-course3 = Course(name="Chem", description="Moles")
 courseR1 = CourseRequest(user=user, course_id=1, relationship=True)
 courseR2 = CourseRequest(user=user2, course_id=1, relationship=False)
 addSomething([user, user2, user3, user4, course, course2, course3, courseR1, courseR2])
@@ -46,13 +43,9 @@ devAccount.permission = 4
 
 db.session.commit()
 
-matchRequests(R2)
+matchRequests(courseR2)
 #add premade courses
 from PeerTutor.add_courses import course_list
 addSomething(course_list)
 
-
-
-
-
-matchRequests(courseR2)
+db.session.commit()
