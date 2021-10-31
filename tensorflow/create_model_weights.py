@@ -1,29 +1,27 @@
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 import numpy as np
-import os
 from os import listdir
-from os.path import isfile, join
 import PIL
 from PIL import Image
 import numpy as np
 from sklearn.model_selection import train_test_split
 from Data_Preprocessing.labels import labels
+from os.path import dirname, abspath, isfile, join
 
-
-EPOCHS = 7
-BATCH_SIZE = 128
+EPOCHS = 56
+BATCH_SIZE = 2
 VERBOSE = 1
 OPTIMIZER = tf.keras.optimizers.Adam()
 VALIDATION_SPLIT = 0.90
 
-IMG_ROWS, IMG_COLS = 28, 28
-INPUT_SHAPE = (IMG_ROWS, IMG_COLS, 1)
+IMG_ROWS, IMG_COLS = 400, 400
+INPUT_SHAPE = (IMG_ROWS, IMG_COLS, 4)
 
 
 
 
-image_path = os.path.abspath(os.path.dirname(__file__)) + "/Data_Preprocessing/Reshaped_Images"
+image_path = abspath(dirname(__file__)) + "/Data_Preprocessing/Reshaped_Images"
 print(image_path)
 
 
@@ -44,11 +42,11 @@ for f in files_names:
 
 
 
-for f in ["1.", "2.", "3.", "4.", "5."]:
+for f in ["1.", "2.", "3.", "4.", "5.", "6.", "7.", "8."]:
     temp_image = Image.open(image_path + "/" + f)
     temp_image = np.asarray(temp_image)
     image_arrays.append(temp_image)
-    label_arrays.append(labels[f[0:-1]])
+    label_arrays.append(labels[f])
 
 
 
@@ -68,17 +66,23 @@ def build_model(input_shape, classes):
     model = models.Sequential()
     #model.add(layers.AveragePooling2D((14, 14)))
 
-    model.add(layers.Conv2D(16, (3, 3), activation='relu', input_shape=(400, 400, 4)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(400, 400, 4)))
     model.add(layers.MaxPooling2D((6,6)))
 
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(66, 66, 16)))
-    model.add(layers.MaxPooling2D((3,3)))
-    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(21, 21, 32)))
-    model.add(layers.MaxPooling2D((3,3)))
+    #model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(66, 66, 16)))
+    #model.add(layers.MaxPooling2D((3,3)))
+    #model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(21, 21, 32)))
+
     model.add(layers.Flatten())
+    model.add(layers.Dropout(0.3))
     model.add(layers.Dense(450, activation='relu'))
     model.add(layers.Dropout(0.3))
-    model.add(layers.Dense(classes, activation='softmax'))
+    model.add(layers.Dense(200, activation='relu'))
+    model.add(layers.Dropout(0.3))
+    model.add(layers.Dense(50, activation='relu'))
+
+
+    model.add(layers.Dense(classes, activation='sigmoid'))
 
     return(model)
 
@@ -96,21 +100,32 @@ X_train, X_test = X_train/np.float32(255), X_test/np.float32(255)
 
 
 model = build_model(input_shape=INPUT_SHAPE, classes=4)
-model.compile(loss='mse', optimizer=OPTIMIZER, metrics=["accuracy", tf.keras.metrics.MeanSquaredError()])
+model.compile(loss='binary_crossentropy', optimizer=OPTIMIZER, metrics=['accuracy'])
 model.build(INPUT_SHAPE)
 model.summary()
 
 
-callbacks = [tf.keras.callbacks.TensorBoard(log_dir='./logs')]
+callbacks = [tf.keras.callbacks.TensorBoard(log_dir= abspath(dirname(__file__)) + '/logs')]
 
-
-history = model.fit(X_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=VERBOSE, validation_split=1/3, callbacks=callbacks)
+history = model.fit(X_train, y_train, epochs=EPOCHS, verbose=VERBOSE, batch_size=BATCH_SIZE, validation_split=1/3, callbacks=callbacks)
 
 score = model.evaluate(X_test, y_test, verbose=VERBOSE)
 print("\nTest Score;", score[0])
 print("\nTest accuracy;", score[1])
 
+print(score)
 
+image_to_predict = X_test[:1]
+
+
+
+print(model.predict(X_test[:1]))
+print(y_test[0])
+
+
+print(abspath(dirname(__file__)))
+
+model.save_weights(abspath(dirname(__file__)) +"/model_weights/")
 """
 Incorportate TensorBoard for better results.
 """
