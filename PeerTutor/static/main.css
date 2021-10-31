@@ -112,6 +112,7 @@ tr:hover {
     display: inline-block;
     margin: 10px;
     text-align: center;
+    border-radius: 25px;
 }
 
 /* Requests */

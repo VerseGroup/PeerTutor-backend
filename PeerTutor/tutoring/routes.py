@@ -6,7 +6,7 @@ from PeerTutor.algorithims.match import matchRequests
 from PeerTutor.models import User, Match, CourseRequest, Course, Schedule
 from flask_login import current_user, login_required
 from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES
-from PeerTutor.tutoring.utils import queryUser, queryCourse, queryCourseRequests
+from PeerTutor.tutoring.utils import queryUser, queryCourse, queryCourseRequests, convertPeriodToString
 
 tutor_functions = Blueprint('tutor_functions', __name__)
 
@@ -51,4 +51,4 @@ def makeRequest():
 def sessions():
     teacherMatches = Match.query.filter_by(tutor_id=current_user.id).all()
     studentMatches = Match.query.filter_by(tutee_id=current_user.id).all()
-    return render_template('sessions.html', teacherMatches=teacherMatches, studentMatches=studentMatches, queryUser=queryUser, queryCourse=queryCourse)
+    return render_template('sessions.html', teacherMatches=teacherMatches, studentMatches=studentMatches, queryUser=queryUser, queryCourse=queryCourse, convertPeriodToString=convertPeriodToString)

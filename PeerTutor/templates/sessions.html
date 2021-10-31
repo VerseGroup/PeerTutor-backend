@@ -6,7 +6,7 @@
     <h2> Courses you are teaching: </h2>
     {% for match in teacherMatches %}
         <div class="match-container">
-            <p> Period: {{ match.period }} </p>
+            <p> Period: {{ convertPeriodToString(match.period) }} </p>
             <p> Student: {{ queryUser(match.tutor_id).username }} </p>
             <p> Course: {{ queryCourse(match.course_id).name }} </p>
         </div>
