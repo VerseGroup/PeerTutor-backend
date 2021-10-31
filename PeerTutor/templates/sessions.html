@@ -13,7 +13,7 @@
             </div>
         {% endfor %}
         {% if len(teacherMatches) == 0 %}
-            <a href="{{url_for('requests')}}"> Request some now! </a>
+            <a href="{{url_for('tutoring.requests')}}"> Request some now! </a>
         {% endif %}
     </div>
 
@@ -29,7 +29,7 @@
             </div>
         {% endfor %}
         {% if len(studentMatches) == 0 %}
-            <a href="{{url_for('tutor_functions.requests')}}"> Request some now! </a>
+            <a href="{{url_for('tutoring.requests')}}"> Request some now! </a>
         {% endif %}
     </div>
 {% endblock %}
