@@ -21,7 +21,7 @@ user3 = User(username="example3", email="example3@gmail.com", password=hashed_pa
 user4 = User(username="dev", email="dev@tc.com", password=hashed_password, grade=11)
 courseR1 = CourseRequest(user=user, course_id=1, relationship=True)
 courseR2 = CourseRequest(user=user2, course_id=1, relationship=False)
-addSomething([user, user2, user3, user4, course, course2, course3, courseR1, courseR2])
+addSomething([user, user2, user3, user4, courseR1, courseR2])
 db.session.commit()
 
 frees_user = dump(["d1p6"])
@@ -45,7 +45,7 @@ db.session.commit()
 
 matchRequests(courseR2)
 #add premade courses
-from PeerTutor.add_courses import course_list
+from add_courses import course_list
 addSomething(course_list)
 
 db.session.commit()
