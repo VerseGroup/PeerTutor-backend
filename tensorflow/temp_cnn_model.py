@@ -18,15 +18,16 @@ def build_model(input_shape, classes):
     model = models.Sequential()
     #model.add(layers.AveragePooling2D((14, 14)))
 
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-    model.add(layers.MaxPooling2D((2,2)))
-
-    model.add(layers.Conv2D(50, (3, 3), activation='relu', input_shape=(13, 13, 32)))
-    model.add(layers.MaxPooling2D((3,3)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(400, 400, 4)))
+    model.add(layers.MaxPooling2D((6,6)))
     model.add(layers.Flatten())
+    model.add(layers.Dropout(0.3))
     model.add(layers.Dense(450, activation='relu'))
     model.add(layers.Dropout(0.3))
-    model.add(layers.Dense(classes, activation='softmax'))
+    model.add(layers.Dense(200, activation='relu'))
+    model.add(layers.Dropout(0.3))
+    model.add(layers.Dense(50, activation='relu'))
+    model.add(layers.Dense(4, activation='sigmoid'))
 
     return(model)
 
