@@ -114,6 +114,13 @@ tr:hover {
     text-align: center;
     border-radius: 25px;
 }
+.session-container{
+    margin: 10px;
+    text-align: center;
+}
+.session-divider{
+    width: 75%;
+}
 
 /* Requests */
 .request-table{
@@ -201,3 +208,4 @@ tr:hover {
     padding-bottom:25px;
     background-color:#C1E1C1; 
 }
+

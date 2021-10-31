@@ -51,4 +51,4 @@ def makeRequest():
 def sessions():
     teacherMatches = Match.query.filter_by(tutor_id=current_user.id).all()
     studentMatches = Match.query.filter_by(tutee_id=current_user.id).all()
-    return render_template('sessions.html', teacherMatches=teacherMatches, studentMatches=studentMatches, queryUser=queryUser, queryCourse=queryCourse, convertPeriodToString=convertPeriodToString)
+    return render_template('sessions.html', teacherMatches=teacherMatches, studentMatches=studentMatches, queryUser=queryUser, queryCourse=queryCourse, convertPeriodToString=convertPeriodToString, len=len)

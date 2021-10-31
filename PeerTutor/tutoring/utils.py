@@ -1,6 +1,6 @@
 from sqlalchemy.orm import relation
 from PeerTutor.models import Course, User, CourseRequest
-from PeerTutor.algorithims.conversions import stringToArray
+from PeerTutor.algorithims.conversions import stringToArrayUD
 
 def getCourses():
     course_array = []
@@ -22,5 +22,5 @@ def queryCourseRequests(user, relationship):
     return CourseRequest.query.filter_by(user=user, relationship=relationship).all()
 
 def convertPeriodToString(period):
-    array = stringToArray(period)
+    array = stringToArrayUD(period)
     return "Day " + array[1] + " Period " + array[3] 

@@ -3,23 +3,33 @@
 {% block title %} Sessions {% endblock title %}
 
 {% block content %}
-    <h2> Courses you are teaching: </h2>
-    {% for match in teacherMatches %}
-        <div class="match-container">
-            <p> Period: {{ convertPeriodToString(match.period) }} </p>
-            <p> Student: {{ queryUser(match.tutor_id).username }} </p>
-            <p> Course: {{ queryCourse(match.course_id).name }} </p>
-        </div>
-    {% endfor %}
+    <div class="session-container">
+        <h2> Courses you are teaching: </h2>
+        {% for match in teacherMatches %}
+            <div class="match-container">
+                <p> {{ convertPeriodToString(match.period) }} </p>
+                <p> With: {{ queryUser(match.tutor_id).username }} </p>
+                <p> Course: {{ queryCourse(match.course_id).name }} </p>
+            </div>
+        {% endfor %}
+        {% if len(teacherMatches) == 0 %}
+            <a href="{{url_for('requests')}}"> Request some now! </a>
+        {% endif %}
+    </div>
 
-    <hr>
+    <hr class="session-divider">
 
-    <h2> Courses you are learning: </h2>
-    {% for match in studentMatches %}
-        <div class="match-container">
-            <p> Period: {{ match.period }} </p>
-            <p> Teacher: {{ queryUser(match.tutee_id).username }} </p>
-            <p> Course: {{ queryCourse(match.course_id).name }} </p>
-        </div>
-    {% endfor %}
+    <div class="session-container">
+        <h2> Courses you are learning: </h2>
+        {% for match in studentMatches %}
+            <div class="match-container">
+                <p> Period: {{ match.period }} </p>
+                <p> Teacher: {{ queryUser(match.tutee_id).username }} </p>
+                <p> Course: {{ queryCourse(match.course_id).name }} </p>
+            </div>
+        {% endfor %}
+        {% if len(studentMatches) == 0 %}
+            <a href="{{url_for('tutor_functions.requests')}}"> Request some now! </a>
+        {% endif %}
+    </div>
 {% endblock %}
