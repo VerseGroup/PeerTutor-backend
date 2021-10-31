@@ -23,7 +23,7 @@ def list_of_matches_to_JSON(matches, type):
 
 def abort_if_no_requests(requests, id):
     if len(requests) == 0:
-        abort(404, message= f"No requests found for user '{id}'")
+        return jsonify({"requests":[]})
 
 def list_of_requests_to_JSON(requests, type):
     request_array = []
