@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from Data_Preprocessing.labels import labels
 from os.path import dirname, abspath, isfile, join
 
-EPOCHS = 100
+EPOCHS = 70
 BATCH_SIZE = 2
 VERBOSE = 1
 OPTIMIZER = tf.keras.optimizers.Adam()
@@ -67,12 +67,8 @@ def build_model(input_shape, classes):
     #model.add(layers.AveragePooling2D((14, 14)))
 
     #model.add(layers.AveragePooling2D((6,6)))
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(400, 400, 4)))
-    model.add(layers.AveragePooling2D((3,3)))
-    #model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(66, 66, 16)))
-
-    #model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(21, 21, 32)))
-
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(400, 400, 4)))
+    model.add(layers.MaxPooling2D((6,6)))
     model.add(layers.Flatten())
     model.add(layers.Dropout(0.3))
     model.add(layers.Dense(450, activation='relu'))
@@ -80,6 +76,7 @@ def build_model(input_shape, classes):
     model.add(layers.Dense(200, activation='relu'))
     model.add(layers.Dropout(0.3))
     model.add(layers.Dense(50, activation='relu'))
+    model.add(layers.Dense(4, activation='sigmoid'))
 
 
     model.add(layers.Dense(classes, activation='sigmoid'))

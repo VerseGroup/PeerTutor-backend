@@ -36,13 +36,14 @@ model.add(layers.Dense(4, activation='sigmoid'))
 #compiling model
 model.compile(loss='binary_crossentropy', optimizer=OPTIMIZER, metrics=['accuracy'])
 model.build(INPUT_SHAPE)
-model.summary()
+
 
 #loading weights
-model.load_weights(base_folder + "/model_weights/")
+model.load_weights(base_folder + "/model_weights/").expect_partial()
 
-def predict(model, image):
-    return(model.predict(image))
+def predict(model, array):
+    model.load_weights(base_folder + "/model_weights/")
+    return(model.predict(array))
 
 
 
