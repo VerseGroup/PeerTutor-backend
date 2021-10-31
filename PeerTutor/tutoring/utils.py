@@ -1,6 +1,6 @@
 from sqlalchemy.orm import relation
 from PeerTutor.models import Course, User, CourseRequest
-from algorithims.conversions import stringToArray
+from PeerTutor.algorithims.conversions import stringToArray
 
 def getCourses():
     course_array = []
