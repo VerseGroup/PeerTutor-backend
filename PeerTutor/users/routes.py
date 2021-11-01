@@ -34,8 +34,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             flash('Logged in Successfully!', 'success')
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('main.home'))
+            return redirect(url_for('main.home'))
         else:
             flash('Log in unsuccessful, please check email and password', 'warning')
     return render_template('/login.html', form=form)
