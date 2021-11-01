@@ -3,6 +3,7 @@
 {% block title %} Requests {% endblock title %}
 
 {% block content %}
+    <div class="requests-page">
     <h1> Courses you want to learn: </h1>
     <table class="request-table">
         <tr>
@@ -34,4 +35,5 @@
     <br> 
     
     <a href="{{url_for('tutor_functions.makeRequest')}}"> Make New Request? </a>
+    </div>
 {% endblock %}

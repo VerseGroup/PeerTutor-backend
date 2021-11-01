@@ -125,9 +125,11 @@ tr:hover {
 /* Requests */
 .request-table{
     border: 1px solid black;
-    width: 100%;
+    width: 75%;
     text-align: center;
     padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* notification styles */
@@ -225,4 +227,9 @@ tr:hover {
 
 hr {
     width: 75%;
+}
+
+.requests-page{
+    margin:10px;
+    text-align: center;
 }
