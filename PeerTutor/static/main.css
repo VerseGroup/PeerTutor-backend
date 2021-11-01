@@ -212,6 +212,7 @@ tr:hover {
 /* Admin Page */
 .admin-page{
     margin: 10px;
+    text-align: center;
 }
 
 .admin-table{
