@@ -11,7 +11,7 @@ Science
 
 """
 
-course_name_and_disc = [("AP Calculus (AB/BC)", "Prepares for BC Exam),
+course_name_and_disc = [("AP Calculus (AB/BC)", "Prepares for BC Exam"),
                 ("Algebra 1: Quadratic Topics", "Basic Algebra"),
                 ("Geometry", "Euclidean Geometry"),
                 ("Algebra II with Trigonometry", "Introduction to trig, exponential, and logarithmic functions"),
