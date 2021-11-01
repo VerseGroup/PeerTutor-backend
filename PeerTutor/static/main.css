@@ -208,7 +208,7 @@ tr:hover {
     margin:0px;
     padding-top:25px;
     padding-bottom:25px;
-    background-color:#C1E1C1; 
+    background-color:#C1E1C1;
 }
 
 /* Admin Page */
@@ -257,5 +257,5 @@ hr {
 
 .api-doc-div{
     margin: 20px;
-    text-align: center;
+    text-align: left;
 }
