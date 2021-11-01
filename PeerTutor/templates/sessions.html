@@ -8,7 +8,7 @@
         {% for match in teacherMatches %}
             <div class="match-container">
                 <p> {{ convertPeriodToString(match.period) }} </p>
-                <p> With: {{ queryUser(match.tutor_id).username }} </p>
+                <p> With: {{ queryUser(match.tutee_id).username }} </p>
                 <p> Course: {{ queryCourse(match.course_id).name }} </p>
             </div>
         {% endfor %}
@@ -24,7 +24,7 @@
         {% for match in studentMatches %}
             <div class="match-container">
                 <p> Period: {{ match.period }} </p>
-                <p> Teacher: {{ queryUser(match.tutee_id).username }} </p>
+                <p> Teacher: {{ queryUser(match.tutor_id).username }} </p>
                 <p> Course: {{ queryCourse(match.course_id).name }} </p>
             </div>
         {% endfor %}

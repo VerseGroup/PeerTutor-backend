@@ -209,3 +209,11 @@ tr:hover {
     background-color:#C1E1C1; 
 }
 
+/* Admin Page */
+.admin-page{
+    margin: 10px;
+}
+
+.admin-table{
+    width: 75%;
+}

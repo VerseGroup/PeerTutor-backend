@@ -3,6 +3,7 @@
 {% block title %} PeerTutor Admin Console {% endblock %}
 
 {% block content %}
+    <div class="admin-page">
     <h1> Goodday, admin </h1>
     <h2 class="admin-table-title"> User Database: </h2>
     <table class="admin-table">
@@ -91,4 +92,5 @@
     </small>
     <br> <br>
     <a class="development-link" href="{{url_for('main.home')}}"> Return to home? </a>
+    <div>
 {% endblock %}
