@@ -10,15 +10,15 @@ from PeerTutor.tutoring.utils import queryUser, queryCourse, queryCourseRequests
 
 tutor_functions = Blueprint('tutor_functions', __name__)
 
-@login_required
 @tutor_functions.route('/requests', methods=['GET'])
+@login_required
 def requests():
     teachRequests = queryCourseRequests(user=current_user, relationship=True)
     learnRequests = queryCourseRequests(user=current_user, relationship=False)
     return render_template('requests.html', queryCourse=queryCourse, teachRequests=teachRequests, learnRequests=learnRequests)
     
-@login_required
 @tutor_functions.route('/request', methods=['GET', 'POST'])
+@login_required
 def makeRequest():
     form = RequestMatch()
     if form.validate_on_submit():
@@ -46,8 +46,8 @@ def makeRequest():
             return redirect(url_for('tutor_functions.sessions'))
     return render_template('request.html', form=form)
 
-@login_required
 @tutor_functions.route('/sessions', methods=['GET'])
+@login_required
 def sessions():
     teacherMatches = Match.query.filter_by(tutor_id=current_user.id).all()
     studentMatches = Match.query.filter_by(tutee_id=current_user.id).all()
