@@ -3,8 +3,9 @@
 {% block title %} PeerTutor API Help {% endblock %}
 
 {% block content %}
+    <div style="margin-left: 20px">
     <h1> PeerTutor API Documentation </h1>
-    <p> 
+    <p>
         Currently in development stage. Check back later for an official release!
     </p>
     <p>
@@ -22,15 +23,15 @@
     <h5> Example return JSON: </h4>
     <p>
         {
-            "email": "example2@gmail.com", 
+            "email": "example2@gmail.com",
             "frees": [
               "d1p6"
-            ], 
-            "grade": 11, 
-            "id": 2, 
-            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-            "permission": 1, 
-            "teachableGrades": [8,9,10,11,12], 
+            ],
+            "grade": 11,
+            "id": 2,
+            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+            "permission": 1,
+            "teachableGrades": [8,9,10,11,12],
             "username": "example2"
         }
     </p>
@@ -43,8 +44,8 @@
     <h5> Example return JSON: </h4>
     <p>
         {
-            "description": "Calc", 
-            "id": 1, 
+            "description": "Calc",
+            "id": 1,
             "name": "Math"
         }
     </p>
@@ -58,13 +59,13 @@
     <p>
         { courses: [
         {
-            "description": "Calc", 
-            "id": 1, 
+            "description": "Calc",
+            "id": 1,
             "name": "Math"
         },
         {
-            "description": "The Passion", 
-            "id": 2, 
+            "description": "The Passion",
+            "id": 2,
             "name": "English"
         }
         ] }
@@ -72,7 +73,7 @@
 
     <hr>
     <p>
-        Find matches by tutee id (GET) @ /api/findmatchbytutee/# 
+        Find matches by tutee id (GET) @ /api/findmatchbytutee/#
     </p>
     </p>
     <small> No Parameters (GET) </small>
@@ -82,34 +83,34 @@
             "matches: ": [
               {
                 "course": {
-                    "description": "The Passion", 
-                    "id": 2, 
+                    "description": "The Passion",
+                    "id": 2,
                     "name": "English"
-                }, 
-                "id": 1, 
-                "period": "d1p6", 
+                },
+                "id": 1,
+                "period": "d1p6",
                 "tutee": {
-                    "email": "example2@gmail.com", 
+                    "email": "example2@gmail.com",
                     "frees": [
                     "d1p6"
-                    ], 
-                    "grade": 11, 
-                    "id": 2, 
-                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                    "permission": 1, 
-                    "teachableGrades": [8,9,10,11,12], 
+                    ],
+                    "grade": 11,
+                    "id": 2,
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                    "permission": 1,
+                    "teachableGrades": [8,9,10,11,12],
                     "username": "example2"
-                }, 
+                },
                 "tutor": {
-                    "email": "example3@gmail.com", 
+                    "email": "example3@gmail.com",
                     "frees": [
                     "d1p6"
-                    ], 
-                    "grade": 11, 
-                    "id": 3, 
-                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                    "permission": 1, 
-                    "teachableGrades": [8,9,10,11,12], 
+                    ],
+                    "grade": 11,
+                    "id": 3,
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                    "permission": 1,
+                    "teachableGrades": [8,9,10,11,12],
                     "username": "example1"
                 }
               }
@@ -129,34 +130,34 @@
             "matches": [
               {
                 "course": {
-                    "description": "The Passion", 
-                    "id": 2, 
+                    "description": "The Passion",
+                    "id": 2,
                     "name": "English"
-                }, 
-                "id": 1, 
-                "period": "d1p6", 
+                },
+                "id": 1,
+                "period": "d1p6",
                 "tutee": {
-                    "email": "example2@gmail.com", 
+                    "email": "example2@gmail.com",
                     "frees": [
                     "d1p6"
-                    ], 
-                    "grade": 11, 
-                    "id": 2, 
-                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                    "permission": 1, 
-                    "teachableGrades": [8,9,10,11,12], 
+                    ],
+                    "grade": 11,
+                    "id": 2,
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                    "permission": 1,
+                    "teachableGrades": [8,9,10,11,12],
                     "username": "example2"
-                }, 
+                },
                 "tutor": {
-                    "email": "example3@gmail.com", 
+                    "email": "example3@gmail.com",
                     "frees": [
                     "d1p6"
-                    ], 
-                    "grade": 11, 
-                    "id": 3, 
-                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                    "permission": 1, 
-                    "teachableGrades": [8,9,10,11,12], 
+                    ],
+                    "grade": 11,
+                    "id": 3,
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                    "permission": 1,
+                    "teachableGrades": [8,9,10,11,12],
                     "username": "example1"
                 }
               }
@@ -177,22 +178,22 @@
             {
                 "id": 2,
                 "user": {
-                    "email": "example2@gmail.com", 
+                    "email": "example2@gmail.com",
                     "frees": [
                     "d1p6"
-                    ], 
-                    "grade": 11, 
-                    "id": 2, 
-                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                    "permission": 1, 
-                    "teachableGrades": [8,9,10,11,12], 
+                    ],
+                    "grade": 11,
+                    "id": 2,
+                    "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                    "permission": 1,
+                    "teachableGrades": [8,9,10,11,12],
                     "username": "example2"
-                }, 
+                },
                 "course": {
-                    "description": "The Passion", 
-                    "id": 2, 
+                    "description": "The Passion",
+                    "id": 2,
                     "name": "English"
-                }, 
+                },
                 "relationship": True
             }
             ]
@@ -201,12 +202,12 @@
 
     <hr>
     <p>
-        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2" 
-            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2,d3p5,d5p6" -d 
+        Register a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/register -d "username=example2"
+            -d "email=example2@gmail.com" -d "grade=11" -d "password=examplePassword" -d "frees=d1p2,d3p5,d5p6" -d
             "teachableGrades=8,7,6,4,6" -X POST -v
     </p>
     </p>
-    <small> Parameters: 
+    <small> Parameters:
         <br>
         username (String)
         <br>
@@ -225,15 +226,15 @@
         {
             "message" : "success"
             "user": {
-                "email": "example2@gmail.com", 
+                "email": "example2@gmail.com",
                 "frees": [
                 "d1p6"
-                ], 
-                "grade": 11, 
-                "id": 2, 
-                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                "permission": 1, 
-                "teachableGrades": [8,9,10,11,12], 
+                ],
+                "grade": 11,
+                "id": 2,
+                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                "permission": 1,
+                "teachableGrades": [8,9,10,11,12],
                 "username": "example2"
             }
         }
@@ -242,13 +243,13 @@
 
     <hr>
     <p>
-        Request a match for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1" 
+        Request a match for a user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/request -d "user_id=1"
             -d "course_id=2" -d "relationship=True" -X POST -v
-        
+
     </p>
-    <p> Notes: Relationship True suggests teacher and relationship False suggests student. <em> Sending a course request will also automatically run the match function to check for new possible matches! </em> 
+    <p> Notes: Relationship True suggests teacher and relationship False suggests student. <em> Sending a course request will also automatically run the match function to check for new possible matches! </em>
     If a match was not found, it will send a pending request that will be matched when another applicable request is made </p>
-    <small> Parameters: 
+    <small> Parameters:
         <br>
         user_id (Int)
         <br>
@@ -267,12 +268,12 @@
     <hr>
     <h2> The following commands only work with a URL Session of some kind </h2>
     <small> (Because they rely on flask-login) </small>
-    
+
     <hr>
     <p>
-        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v     
+        Login user (POST) @ curl http://hackleypeertutor.herokuapp.com/api/login -d "username=example" -d "password=123" -X POST -v
     </p>
-    <small> Parameters: 
+    <small> Parameters:
         <br>
         username (String)
         <br>
@@ -283,15 +284,15 @@
         {
             "logged_in" : True,
             "user": {
-                "email": "example2@gmail.com", 
+                "email": "example2@gmail.com",
                 "frees": [
                 "d1p6"
-                ], 
-                "grade": 11, 
-                "id": 2, 
-                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-                "permission": 1, 
-                "teachableGrades": [8,9,10,11,12], 
+                ],
+                "grade": 11,
+                "id": 2,
+                "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+                "permission": 1,
+                "teachableGrades": [8,9,10,11,12],
                 "username": "example2"
             }
         }
@@ -305,15 +306,15 @@
     <h5> Example return JSON: </h4>
     <p>
         {
-            "email": "example2@gmail.com", 
+            "email": "example2@gmail.com",
             "frees": [
               "d1p6"
-            ], 
-            "grade": 11, 
-            "id": 2, 
-            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT", 
-            "permission": 1, 
-            "teachableGrades": "8,9,10,11,12", 
+            ],
+            "grade": 11,
+            "id": 2,
+            "joinDate": "Mon, 18 Oct 2021 14:17:37 GMT",
+            "permission": 1,
+            "teachableGrades": "8,9,10,11,12",
             "username": "example2"
         }
     </p>
@@ -330,7 +331,8 @@
             "message" : "successful logout"
         }
     </p>
-    
+
     <br> <br>
     <a class="development-link" href=" {{url_for('admin.adminPage')}}"> Looking for the admin page? </a>
+  </div>
 {% endblock %}
