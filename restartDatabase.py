@@ -45,7 +45,7 @@ db.session.commit()
 
 matchRequests(courseR2)
 #add premade courses
-from PeerTutor.add_courses import course_list
+from add_courses import course_list
 addSomething(course_list)
 
 db.session.commit()
