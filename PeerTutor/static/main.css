@@ -244,11 +244,11 @@ hr {
     text-align: center;
 }
 
-.login-legend{
-    width:50%;
-}
-
 .login-link{
     text-align: center;
     margin: 10px;
+}
+
+.login-form{
+    width: 50%;
 }
