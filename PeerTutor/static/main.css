@@ -254,3 +254,8 @@ hr {
     margin-left:auto;
     margin-right:auto;
 }
+
+.api-doc-div{
+    margin: 20px;
+    text-align: center;
+}
