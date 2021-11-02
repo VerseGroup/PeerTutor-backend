@@ -4,7 +4,7 @@ from PeerTutor.algorithims.pickleTools import extract
 
 def matchRequests(request): 
     def findMatch(request):
-        matches = CourseRequest.query.filter_by(course_id=request.course_id, relationship=(not request.relationship)).order_by(CourseRequest.date_added.desc()).all()
+        matches = CourseRequest.query.filter_by(course_id=request.course_id, relationship=(not request.relationship), user=not request.user).order_by(CourseRequest.date_added.desc()).all()
         
         best_match = None
         request_frees = loadFrees(request.user_id)
@@ -49,7 +49,10 @@ def matchRequests(request):
     def loadFrees(user_id):
         schedule = User.query.get(user_id).schedule
         if len(schedule) > 0:
-            return extract(schedule[0].frees)
+            frees = extract(schedule[0].frees)
+            used_frees = Match.query.filter_by(tutee_id = user_id).append(Match.query.filter_by(tutor_id=user_id))
+            frees.remove(used_frees)
+            return frees
         else:
             return None
         
