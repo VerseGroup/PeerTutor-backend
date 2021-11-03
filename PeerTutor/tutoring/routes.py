@@ -2,7 +2,7 @@ from flask import render_template, request, Blueprint, redirect, url_for, flash
 from flask_login.utils import login_required
 from werkzeug.local import release_local
 from PeerTutor import db
-from PeerTutor.algorithims.match import matchRequests
+from PeerTutor.algorithims.new_match import makeMatchWithRequest
 from PeerTutor.models import User, Match, CourseRequest, Course, Schedule
 from flask_login import current_user, login_required
 from PeerTutor.tutoring.forms import RequestMatch, COURSE_CHOICES, TEACHING_CHOICES
@@ -37,8 +37,8 @@ def makeRequest():
         db.session.add(courseR)
         db.session.commit()
 
-        matchFound = matchRequests(courseR)
-        if matchFound[0] == False:
+        match = makeMatchWithRequest(courseR)
+        if match is None:
             flash('Sent Request!', 'success')
             return redirect(url_for('tutor_functions.requests'))
         else:

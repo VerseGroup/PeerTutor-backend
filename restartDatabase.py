@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import relationship
 from PeerTutor import db, bcrypt
-from PeerTutor.algorithims.match import matchRequests
+from PeerTutor.algorithims.new_match import makeMatchWithRequest
 from PeerTutor.algorithims.pickleTools import dump
 db.drop_all()
 from PeerTutor.models import User, Course, CourseRequest, Match, Schedule
@@ -43,7 +43,7 @@ devAccount.permission = 4
 
 db.session.commit()
 
-matchRequests(courseR2)
+makeMatchWithRequest(courseR1)
 #add premade courses
 from add_courses import course_list
 addSomething(course_list)

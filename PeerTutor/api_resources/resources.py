@@ -2,7 +2,7 @@ from PeerTutor import Resource, db, bcrypt
 from flask_restful import reqparse
 from PeerTutor.models import User, CourseRequest, Course, Match, Schedule
 from PeerTutor.api_resources.utils import abort_if_user_doesnt_exist, abort_if_course_doesnt_exist, abort_if_no_matches, list_of_matches_to_JSON, abort_if_no_requests, list_of_requests_to_JSON, all_courses_to_JSON
-from PeerTutor.algorithims.match import matchRequests
+from PeerTutor.algorithims.new_match import makeMatchWithRequest
 from PeerTutor.algorithims.pickleTools import dump
 from PeerTutor.algorithims.conversions import stringToArray
 from flask_login import login_user, current_user, logout_user, login_required
@@ -168,10 +168,9 @@ class RequestCourse(Resource):
                 "match_found" : False
             }, 400
         
-        matchFound = matchRequests(request)
-        #Where matchFound[0] is match or no, and matchFound[1] is match id if applicable
+        match = makeMatchWithRequest(request)
         
-        if matchFound[0] == False:
+        if match:
             return {
                 "message": "success",
                 "match_found" : False
@@ -180,7 +179,7 @@ class RequestCourse(Resource):
             return {
                 "message" : "success",
                 "match_found" : True,
-                # "match" : matchFound[1].toJSON()
+                # "match" : match.toJSON()
             }
   
 # Login Users
