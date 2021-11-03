@@ -25,18 +25,21 @@ def findPotentialMatches(request):
 
     #removing potential requests that don't have shared frees
     request_frees = loadFrees(request.user)
-    for potential_request in potential_requests:
-        potential_request_frees = loadFrees(potential_request.user)
-        
-        contains_frees = False
-        for free in request_frees:
-            if free in potential_request_frees:
-                contains_frees = True
+    if request_frees:
+        for potential_request in potential_requests:
+            potential_request_frees = loadFrees(potential_request.user)
+            
+            contains_frees = False
+            for free in request_frees:
+                if free in potential_request_frees:
+                    contains_frees = True
 
-        if contains_frees == False:
-            potential_requests.remove(potential_request)
+            if contains_frees == False:
+                potential_requests.remove(potential_request)
 
-    return potential_requests
+        return potential_requests
+    else:
+        return None
 
 def makeMatch(request1, request2):
     db.session.remove(CourseRequest.query.get(request1.id))
