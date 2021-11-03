@@ -9,7 +9,7 @@ def getCourses():
     for course in courses:
         course_array.append((count, course))
         count += 1
-    print(course_array)
+    #print(course_array)
     return course_array
 
 def queryUser(id):

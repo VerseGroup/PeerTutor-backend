@@ -48,17 +48,6 @@ def matchRequests(request):
                     if free1 == free2:
                         return [True, free1]
         return None
-
-    def loadFrees(user_id):
-        schedule = User.query.get(user_id).schedule
-        if len(schedule) > 0:
-            frees = extract(schedule[0].frees)
-            used_frees = Match.query.filter_by(tutee_id = user_id).all().append(Match.query.filter_by(tutor_id=user_id))
-            if used_frees:
-                frees.remove(used_frees)
-            return frees
-        else:
-            return None
         
     match = findMatch(request)
     print("match " + str(match))
