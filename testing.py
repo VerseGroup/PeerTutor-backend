@@ -11,9 +11,5 @@ def testingMatching():
     db.session.add(request2)
     db.session.commit()
 
-#testingMatching()
+testingMatching()
 
-user1 = User.query.get(1)
-
-from PeerTutor.algorithims.utils import loadFrees
-print(loadFrees(user1))
