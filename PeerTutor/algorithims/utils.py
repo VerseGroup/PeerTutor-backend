@@ -15,10 +15,23 @@ def loadFrees(user):
         return None
 
 def getUsedFrees(user):
-    return (Match.query.filter_by(tutee_id=user.id).all(),(Match.query.filter_by(tutor_id=user.id).all()))
+    tutoring_matches = Match.query.filter_by(tutee_id=user.id).all()
+    student_matches = Match.query.filter_by(tutor_id=user.id).all()
+
+    tutoring_matches_periods = []
+    for match in tutoring_matches:
+        tutoring_matches_periods.append(match.period)
+
+    student_matches_periods = []
+    for match in student_matches:
+        student_matches_periods.append(match.period)
+    
+    return (tutoring_matches_periods, student_matches_periods)
 
 def removeOverlaps(frees, user):
     tutoring_match_periods, student_match_periods = getUsedFrees(user)
+    print(tutoring_match_periods)
+    print(student_match_periods)
     for free in frees:
         if free in tutoring_match_periods or free in student_match_periods:
             frees.remove(free)
