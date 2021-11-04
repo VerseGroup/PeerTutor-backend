@@ -22,6 +22,9 @@ login_manager.login_view = 'users.login'
 login_manager.login_message_category = '#' #add custom class
 login_manager.login_message = u"Please login"
 
+from PeerTutor.tutoring.utils import getCourses
+COURSE_CHOICES = getCourses()
+
 #Registering blueprints
 from PeerTutor.main.routes import main
 app.register_blueprint(main)
@@ -51,3 +54,4 @@ api.add_resource(FindCourseRequestsByTutee, '/api/findmatchrequestbytutee/<int:i
 
 from PeerTutor.api_resources.resources import RequestCourse
 api.add_resource(RequestCourse, '/api/request')
+

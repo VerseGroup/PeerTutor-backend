@@ -42,8 +42,11 @@ def findPotentialMatches(request):
         return None
 
 def makeMatch(request1, request2):
-    db.session.remove(CourseRequest.query.get(request1.id))
-    db.session.remove(CourseRequest.query.get(request2.id))
+    request1 = CourseRequest.query.get(request1.id)
+    request2 = CourseRequest.query.get(request2.id)
+
+    db.session.delete(request1)
+    db.session.delete(request2)
 
     try:
         db.session.commit()
@@ -57,8 +60,8 @@ def makeMatch(request1, request2):
         tutor_id = request2.user_id
         tutee_id = request1.user_id
 
-    request1_frees = loadFrees(request1)
-    request2_frees = loadFrees(request2)
+    request1_frees = loadFrees(request1.user)
+    request2_frees = loadFrees(request2.user)
 
     for free in request1_frees:
         if free in request2_frees:
